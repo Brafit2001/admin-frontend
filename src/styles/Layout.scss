@@ -1,0 +1,117 @@
+a{
+  text-decoration: none;
+  color: red;
+}
+p{
+  margin: 0;
+}
+
+ul{
+  list-style: none;
+}
+// ---------------------------------------------------------------------------------------//
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+
+  .content{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 70%;
+    width: 97%;
+    .logo{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100%;
+      background-color: red;
+    }
+    .search{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 100%;
+      background-color: blue;
+
+    }
+    .profile{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 100%;
+      background-color: green;
+    }
+  }
+ }
+
+
+main{
+  display: flex;
+  .left-side-bar{
+    width: 17%;
+    background-color: aqua;
+    height: 90vh;
+
+    .cards{
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      .card{
+        display: flex;
+        cursor: pointer;
+
+        .subcards{
+          display: flex;
+          height: 60px;
+        }
+      }
+    }
+
+  }
+  .main-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83%;
+
+    background-color: #F9FAFB;
+    .content-1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 97%;
+      height: 93%;
+      background-color: white;
+      border-radius: 16px;
+      .content-2{
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        height: 96%;
+
+        .my-table{
+
+          .row{
+            display: flex;
+            justify-content: start;
+            .headers{
+              color: black;
+              font-weight: 600;
+            }
+            .cell{
+              flex-basis: 20%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

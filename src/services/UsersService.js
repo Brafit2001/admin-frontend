@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTEwMTYwNjYsImV4cCI6MTcxMTAzNDA2NiwidXNlcklkIjoxLCJ1c2VybmFtZSI6Im1hcmNlIn0.NihYrTcq8qszOzNKQk0z8degbBDcNhKNlh_plMwwBw0"
+const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTEwNDUzMDMsImV4cCI6MTcxMTA2MzMwMywidXNlcklkIjoxLCJ1c2VybmFtZSI6Im1hcmNlIn0.SYU1YiPfNnhPDj9OLw93ulXQ6DAoAulwZsTyv5c1dEI"
 
 export const getAllUsers = (setUsers) =>
     axios

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import {getAllUsers} from "../../services/UsersService";
+import {getAllUsers} from "../../services/UserService";
 import MyTable from "../../components/MyTable";
-import {Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Users = () => {
     const [users, setUsers] = useState([])
@@ -13,8 +13,8 @@ const Users = () => {
     return (
         <div className="content-2">
             <h1>Users</h1>
+            <Link to={"/users/new"}>New user</Link>
             <MyTable content={users}/>
-            <Outlet/>
         </div>
     );
 };

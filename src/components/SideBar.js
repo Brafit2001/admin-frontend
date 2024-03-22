@@ -11,9 +11,9 @@ const SideBar = () => {
                     <Link to="/">Home</Link>
                 </li>
                 {
-                    SidebarData.map((item) => {
+                    SidebarData.map((item, index) => {
                         return (
-                            <SubMenu item={item}/>
+                            <SubMenu item={item} key={index}/>
                         )
                     })
                 }

@@ -2,7 +2,7 @@ import {TableData} from "./TableData";
 import {useNavigate} from "react-router-dom";
 
 
-const MyForm = ({item, editFunction, table, mode}) => {
+const MyForm = ({item, actionFunction, table, mode}) => {
 
     const navigate = useNavigate()
     function handleOnchange(key, e) {
@@ -12,8 +12,8 @@ const MyForm = ({item, editFunction, table, mode}) => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        editFunction(item)
-        navigate("/")
+        actionFunction(item).then(() => navigate("/" + table))
+
     }
 
     return (
@@ -33,6 +33,6 @@ const MyForm = ({item, editFunction, table, mode}) => {
         </form>
     )
 
-}
+};
 
-export default MyForm
+export default MyForm;

@@ -1,5 +1,5 @@
-import {editUser, newUser} from "../../services/UserService";
-import MyForm from "../../components/MyForm";
+import {newUser} from "../../../services/UserService";
+import MyForm from "../../../components/MyForm";
 
 const NewUser = () =>{
 
@@ -13,7 +13,7 @@ const NewUser = () =>{
     return (
         <div>
             <h1>NewUser</h1>
-            <MyForm item={user} editFunction={newUser} table="users" mode="create"/>
+            <MyForm item={user} actionFunction={newUser} table="users" mode="create"/>
         </div>
 
     )

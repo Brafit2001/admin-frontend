@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import '../styles/Layout.scss';
 import SideBar from "../components/SideBar";
 const Layout = () => {
@@ -7,7 +7,7 @@ const Layout = () => {
             <header>
                 <div className="content">
                     <div className="logo">
-                        logo
+                        <Link to="/">Logo</Link>
                     </div>
                     <div className="search">
                         search section

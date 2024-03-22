@@ -13,4 +13,16 @@ export const TableData = {
             "username", "name", "surname", "email"
         ]
     },
+    roles: {
+        title: "Roles",
+        headers: [
+            "id","name"
+        ],
+        editable: [
+            "name"
+        ],
+        create: [
+            "name"
+        ]
+    }
 }

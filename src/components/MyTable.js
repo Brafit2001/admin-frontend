@@ -1,15 +1,14 @@
 import {TableData} from "./TableData";
 import {Link} from "react-router-dom";
-import {deleteUser} from "../services/UserService";
 
-const MyTable = ({content}) => {
+const MyTable = ({content, table, deleteFunction}) => {
 
       function handleDelete(item) {
 
          let text = "Are you sure you want to delete?";
          // eslint-disable-next-line no-restricted-globals
          if (confirm(text) === true) {
-             deleteUser(item.id).then(() => window.location.reload())
+             deleteFunction(item.id).then(() => window.location.reload())
          }
      }
 
@@ -18,7 +17,7 @@ const MyTable = ({content}) => {
             <thead>
             <tr className="row">
                 {
-                    TableData["users"].headers.map((value) => {
+                    TableData[table].headers.map((value) => {
                         return (
                             <td className="cell headers">{value.toUpperCase()}</td>
                         )
@@ -31,7 +30,7 @@ const MyTable = ({content}) => {
             {content && content.map((item) => {
                 return (
                     <tr className="row">
-                        {TableData["users"].headers.map((value) => {
+                        {TableData[table].headers.map((value) => {
                             return (
                                 <td className="cell">
                                     <Link to={`${item.id}`} state={item}>

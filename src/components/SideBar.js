@@ -7,9 +7,6 @@ const SideBar = () => {
     return (
         <aside className="left-side-bar">
             <ul className="cards">
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
                 {
                     SidebarData.map((item, index) => {
                         return (

@@ -1,7 +1,15 @@
 import {Link, Outlet} from "react-router-dom";
 import '../styles/Layout.scss';
 import SideBar from "../components/SideBar";
+import {login} from "../services/AuthService";
 const Layout = () => {
+
+    function handleLogin(){
+        login('marce', '0000').then((response) =>
+            localStorage.setItem("token", response.data.token)
+        )
+    }
+
     return (
         <>
             <header>
@@ -9,6 +17,9 @@ const Layout = () => {
                     <div className="logo">
                         <Link to="/">Logo</Link>
                     </div>
+                    <button onClick={handleLogin}>
+                        Login
+                    </button>
                     <div className="search">
                         search section
                     </div>

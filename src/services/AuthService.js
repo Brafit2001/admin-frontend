@@ -1,12 +1,10 @@
+import axios from "axios";
 
 
-export const login = () =>
-    fetch(
-        `http://localhost:8080/auth`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-    )
+export const login = (username, password) =>
+    axios
+        .post(`http://localhost:8080/auth/`,
+            {username: username, password: password},
+        )
+        .then((response) => response)
+        .catch((error) => console.log(error))

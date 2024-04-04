@@ -14,6 +14,16 @@ export const getAllUsers = (setUsers) =>
         .catch((error) => console.log(error))
 
 
+export const getUserById = (userId) =>
+    axios
+        .get(BASE_URL + userId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
 export const editUser = (user) =>
     axios
         .put(BASE_URL + user.id,

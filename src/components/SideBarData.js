@@ -1,7 +1,12 @@
+import UsersIcon from '../resources/images/users.svg'
+import CoursesIcon from '../resources/images/courses.svg'
+import GroupsIcon from '../resources/images/groups.svg'
+import VotesIcon from '../resources/images/votes.svg'
+
 export const SidebarData = [
     {
         title: 'Users',
-
+        icon: UsersIcon,
         subNav: [
             {
                 title: 'Users management',
@@ -15,7 +20,7 @@ export const SidebarData = [
     },
     {
         title: 'Courses',
-
+        icon: CoursesIcon,
         subNav: [
             {
                 title: 'Courses management',
@@ -33,7 +38,7 @@ export const SidebarData = [
     },
     {
         title: 'Groups',
-
+        icon: GroupsIcon,
         subNav: [
             {
                 title: 'Groups management',
@@ -47,7 +52,7 @@ export const SidebarData = [
     },
     {
         title: 'Votes',
-
+        icon: VotesIcon,
         subNav: [
             {
                 title: 'Votes management',

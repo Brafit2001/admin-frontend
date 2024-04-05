@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {deleteClass, getAllClasses} from "../../../services/courses-ms/ClassService";
 import {Link} from "react-router-dom";
-import MyTable from "../../../components/MyTable";
+import MyTable from "../../../components/table/MyTable";
+import PageHeader from "../../../components/PageHeader";
 
 const Classes = () => {
     const [classes, setClasses] = useState([])
@@ -12,8 +13,7 @@ const Classes = () => {
 
     return (
         <div className="content-2">
-            <h1>Classes</h1>
-            <Link to={"/classes/new"}>New Class</Link>
+            <PageHeader title={"Classes"} createPath={"/classes/new"}/>
             <MyTable content={classes} table={"classes"} deleteFunction={deleteClass}/>
         </div>
     );

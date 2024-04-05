@@ -1,10 +1,16 @@
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import MyTable from "../../../components/MyTable";
+import MyTable from "../../../components/table/MyTable";
 import {deleteRole, getAllRoles} from "../../../services/users-ms/RoleService";
+import PageHeader from "../../../components/PageHeader";
 
 const Roles = () => {
     const [roles, setRoles] = useState([])
+
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const data = roles.filter((role) => {
+        return  role.name.toLowerCase().includes(searchQuery.toLowerCase())
+    });
 
     useEffect(() => {
         getAllRoles(setRoles).then(() => console.log(roles))
@@ -12,9 +18,8 @@ const Roles = () => {
 
     return (
         <div className="content-2">
-            <h1>Roles</h1>
-            <Link to={"/roles/new"}>New Role</Link>
-            <MyTable content={roles} table={"roles"} deleteFunction={deleteRole}/>
+            <PageHeader title={"Roles"} createPath={"/roles/new"} setQuery={setSearchQuery} query={searchQuery}/>
+            <MyTable content={data} table={"roles"} deleteFunction={deleteRole}/>
         </div>
     );
 };

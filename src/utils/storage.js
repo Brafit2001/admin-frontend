@@ -3,7 +3,6 @@ const storage = {
     get (key) {
 
         const value = localStorage.getItem(key);
-
         if (value == null) {
             console.log(value)
             return null;

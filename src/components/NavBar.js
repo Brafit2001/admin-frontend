@@ -4,7 +4,6 @@ import { jwtDecode } from 'jwt-decode'
 import {getUserById} from "../services/users-ms/UserService";
 import storage from "../utils/storage";
 import Capitalize from "../utils/Capitalize";
-import {useState} from "react";
 
 const NavBar = () => {
 
@@ -14,6 +13,7 @@ const NavBar = () => {
         login('marce', '0000').then((response) => {
                 localStorage.setItem("token", response.data.token)
                 const payload = jwtDecode(response.data.token)
+                console.log(payload)
                 getUserById(payload.userId).then((user) => storage.set("user", user))
 
             }
@@ -34,9 +34,9 @@ const NavBar = () => {
                     <div className="profile-image">
 
                     </div>
-                    <Link className={"profile-info"} to={`users/${user.id}`} state={user}>
+                    <Link className={"profile-info"} to={`users/${user && user.id}`} state={user}>
                         <p className="name">
-                            {Capitalize(storage.get("user").name)}  {Capitalize(storage.get("user").surname)}
+                            {user && Capitalize(storage.get("user").name)}  {user && Capitalize(storage.get("user").surname)}
                         </p>
                         <p className="role">
                             Admin

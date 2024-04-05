@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {deletePost, getAllPosts} from "../../../services/votes-ms/PostService";
 import {Link} from "react-router-dom";
-import MyTable from "../../../components/MyTable";
+import MyTable from "../../../components/table/MyTable";
+import PageHeader from "../../../components/PageHeader";
 
 const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -12,8 +13,7 @@ const Posts = () => {
 
     return (
         <div className="content-2">
-            <h1>Posts</h1>
-            <Link to={"/posts/new"}>New Post</Link>
+            <PageHeader title={"Posts"} createPath={"/posts/new"}/>
             <MyTable content={posts} table={"posts"} deleteFunction={deletePost}/>
         </div>
     );

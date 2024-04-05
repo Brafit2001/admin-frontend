@@ -37,6 +37,18 @@ export const TableData = {
             "title", "year"
         ]
     },
+    classes: {
+        title: "Classes",
+        headers: [
+            "id","subject", "title", "image"
+        ],
+        editable: [
+            "subject", "title", "image"
+        ],
+        create: [
+            "subject", "title", "image"
+        ]
+    },
     groups: {
         title: "Groups",
         headers: [

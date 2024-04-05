@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import ArrowDown from '../resources/images/arrow-down.svg'
-import ArrowUp from '../resources/images/arrow-up.svg'
+import ArrowDown from '../../resources/images/arrow-down.svg'
+import ArrowUp from '../../resources/images/arrow-up.svg'
 
 const SubMenu = ({item}) => {
 

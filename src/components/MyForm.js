@@ -1,4 +1,4 @@
-import {TableData} from "./TableData";
+import {TableData} from "./table/TableData";
 import {useNavigate} from "react-router-dom";
 
 

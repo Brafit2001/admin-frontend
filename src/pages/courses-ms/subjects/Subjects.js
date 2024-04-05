@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {deleteSubject, getAllSubjects} from "../../../services/courses-ms/SubjectService";
 import {Link} from "react-router-dom";
-import MyTable from "../../../components/MyTable";
+import MyTable from "../../../components/table/MyTable";
+import PageHeader from "../../../components/PageHeader";
 
 const Subjects = () => {
     const [subjects, setSubjects] = useState([])
@@ -12,8 +13,7 @@ const Subjects = () => {
 
     return (
         <div className="content-2">
-            <h1>Subjects</h1>
-            <Link to={"/subjects/new"}>New Subject</Link>
+            <PageHeader title={"Subjects"} createPath={"/subjects/new"}/>
             <MyTable content={subjects} table={"subjects"} deleteFunction={deleteSubject}/>
         </div>
     );

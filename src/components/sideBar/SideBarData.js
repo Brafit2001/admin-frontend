@@ -1,7 +1,7 @@
-import UsersIcon from '../resources/images/users.svg'
-import CoursesIcon from '../resources/images/courses.svg'
-import GroupsIcon from '../resources/images/groups.svg'
-import VotesIcon from '../resources/images/votes.svg'
+import UsersIcon from '../../resources/images/users.svg'
+import CoursesIcon from '../../resources/images/courses.svg'
+import GroupsIcon from '../../resources/images/groups.svg'
+import VotesIcon from '../../resources/images/votes.svg'
 
 export const SidebarData = [
     {

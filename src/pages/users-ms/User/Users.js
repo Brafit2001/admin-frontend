@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import {deleteUser, getAllUsers} from "../../../services/users-ms/UserService";
-import MyTable from "../../../components/MyTable";
-import {Link} from "react-router-dom";
+import MyTable from "../../../components/table/MyTable";
+import PageHeader from "../../../components/PageHeader";
 
 const Users = () => {
     const [users, setUsers] = useState([])
+    const [ search, setSearch ] = useState("")
+
+    const results = !search ? users : users.filter((user)=> user.username.toLowerCase().includes(search.toLocaleLowerCase()))
 
     useEffect(() => {
         getAllUsers(setUsers)
@@ -12,9 +15,8 @@ const Users = () => {
 
     return (
         <div className="content-2">
-            <h1>Users</h1>
-            <Link to={"/users/new"}>New user</Link>
-            <MyTable content={users} table={"users"} deleteFunction={deleteUser}/>
+            <PageHeader title={"Users"} createPath={"/users/new"} setQuery={setSearch} query={search}/>
+            <MyTable content={results} table={"users"} deleteFunction={deleteUser}/>
         </div>
     );
 };

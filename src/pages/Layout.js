@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 import '../styles/Layout.scss';
-import SideBar from "../components/SideBar";
+import SideBar from "../components/sideBar/SideBar";
 import NavBar from "../components/NavBar";
 const Layout = () => {
 

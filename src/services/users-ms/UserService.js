@@ -1,4 +1,5 @@
 import axios from 'axios'
+import storage from "../../utils/storage";
 
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8080/users/`
@@ -24,6 +25,8 @@ export const getUserById = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+
+
 export const editUser = (user) =>
     axios
         .put(BASE_URL + user.id,
@@ -36,7 +39,7 @@ export const editUser = (user) =>
         .catch((error) => console.log(error))
 
 
-export const newUser = (user) =>{
+export const newUser = (user) =>
     axios
         .post(BASE_URL,
             user,{
@@ -46,7 +49,7 @@ export const newUser = (user) =>{
             })
         .then((response) => response)
         .catch((error) => console.log(error))
-}
+
 
 
 export const deleteUser = (userId) =>

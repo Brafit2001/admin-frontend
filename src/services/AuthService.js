@@ -7,4 +7,4 @@ export const login = (username, password) =>
             {username: username, password: password},
         )
         .then((response) => response)
-        .catch((error) => console.log(error))
+        .catch((error) => error)

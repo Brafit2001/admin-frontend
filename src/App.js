@@ -12,13 +12,15 @@ import {classesRoutes} from "./routes/courses-ms/ClassesRoutes";
 import {topicsRoutes} from "./routes/groups-ms/TopicsRoutes";
 import {postsRoutes} from "./routes/votes-ms/PostsRoutes";
 import {groupsRoutes} from "./routes/groups-ms/GroupsRoutes";
+import Login from "./pages/Login";
 
 function App() {
 
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Login />}/>
+            <Route path="/clipclass" element={<Layout />}>
               <Route index element={<Home />} />
               {usersRoutes}
               {rolesRoutes}

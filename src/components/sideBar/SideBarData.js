@@ -10,11 +10,11 @@ export const SidebarData = [
         subNav: [
             {
                 title: 'Users management',
-                path: '/users'
+                path: '/clipclass/users'
             },
             {
                 title: 'Roles Management',
-                path: '/roles'
+                path: '/clipclass/roles'
             }
         ]
     },
@@ -24,15 +24,15 @@ export const SidebarData = [
         subNav: [
             {
                 title: 'Courses management',
-                path: '/courses'
+                path: '/clipclass/courses'
             },
             {
                 title: 'Subjects Management',
-                path: '/subjects'
+                path: '/clipclass/subjects'
             },
             {
                 title: 'Classes Management',
-                path: '/classes'
+                path: '/clipclass/classes'
             }
         ]
     },
@@ -42,11 +42,11 @@ export const SidebarData = [
         subNav: [
             {
                 title: 'Groups management',
-                path: '/groups'
+                path: '/clipclass/groups'
             },
             {
                 title: 'Topics Management',
-                path: '/topics'
+                path: '/clipclass/topics'
             }
         ]
     },
@@ -56,11 +56,11 @@ export const SidebarData = [
         subNav: [
             {
                 title: 'Votes management',
-                path: '/votes'
+                path: '/clipclass/votes'
             },
             {
                 title: 'Posts Management',
-                path: '/posts'
+                path: '/clipclass/posts'
             }
         ]
     }

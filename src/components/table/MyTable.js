@@ -22,19 +22,19 @@ const MyTable = ({content, table, deleteFunction}) => {
     return (
         <table className="my-table">
             <thead>
-            <tr className="row" style={{backgroundColor: "#F9FAFB"}}>
-                {
-                    TableData[table].headers.map((value, index) => {
-                        return (
-                            <td className="cell headers" key={index}>{value.toUpperCase()}</td>
-                        )
-                    })
-                }
-                <td className="cell headers">ACTION</td>
-            </tr>
+                <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>
+                    {
+                        TableData[table].headers.map((value, index) => {
+                            return (
+                                <th className="cell header-cell" key={index}>{value.toUpperCase()}</th>
+                            )
+                        })
+                    }
+                    <th className="cell header-cell">ACTION</th>
+                </tr>
             </thead>
             <tbody>
-            {content && content.map((item, index) => {
+                {content && content.map((item, index) => {
                 return (
                     <tr className="row" style={rowColor(index)} key={index}>
                         {TableData[table].headers.map((value, index) => {

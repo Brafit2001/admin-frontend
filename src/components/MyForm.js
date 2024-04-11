@@ -12,7 +12,7 @@ const MyForm = ({item, actionFunction, table, mode}) => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        actionFunction(item).then(() => navigate("/" + table))
+        actionFunction(item).then(() => navigate("/clipclass/" + table))
 
     }
 

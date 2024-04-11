@@ -5,21 +5,18 @@ import PageHeader from "../../../components/PageHeader";
 
 const Roles = () => {
     const [roles, setRoles] = useState([])
+    const [ search, setSearch ] = useState("")
 
-    const [searchQuery, setSearchQuery] = useState("");
-
-    const data = roles.filter((role) => {
-        return  role.name.toLowerCase().includes(searchQuery.toLowerCase())
-    });
+    const results = !search ? roles : roles.filter((role)=> role.name.toLowerCase().includes(search.toLocaleLowerCase()))
 
     useEffect(() => {
-        getAllRoles(setRoles).then(() => console.log(roles))
-    }, [roles]);
+        getAllRoles(setRoles)
+    }, []);
 
     return (
         <div className="content-2">
-            <PageHeader title={"Roles"} createPath={"/roles/new"} setQuery={setSearchQuery} query={searchQuery}/>
-            <MyTable content={data} table={"roles"} deleteFunction={deleteRole}/>
+            <PageHeader title={"Roles"} createPath={"new"} setQuery={setSearch} query={search}/>
+            <MyTable content={results} table={"roles"} deleteFunction={deleteRole}/>
         </div>
     );
 };

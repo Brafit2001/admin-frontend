@@ -15,7 +15,7 @@ const Users = () => {
 
     return (
         <div className="content-2">
-            <PageHeader title={"Users"} createPath={"/users/new"} setQuery={setSearch} query={search}/>
+            <PageHeader title={"Users"} createPath={"new"} setQuery={setSearch} query={search}/>
             <MyTable content={results} table={"users"} deleteFunction={deleteUser}/>
         </div>
     );

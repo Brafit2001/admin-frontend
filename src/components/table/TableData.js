@@ -11,6 +11,9 @@ export const TableData = {
         ],
         create: [
             "username", "name", "surname", "email"
+        ],
+        filter: [
+            "id", "username", "name", "surname", "email"
         ]
     },
     roles: {
@@ -23,6 +26,9 @@ export const TableData = {
         ],
         create: [
             "name"
+        ],
+        filter: [
+            "id", "name"
         ]
     },
     courses: {
@@ -35,6 +41,9 @@ export const TableData = {
         ],
         create: [
             "title", "year"
+        ],
+        filter: [
+            "id","title","year"
         ]
     },
     classes: {
@@ -47,6 +56,9 @@ export const TableData = {
         ],
         create: [
             "subject", "title", "image"
+        ],
+        filter: [
+            "id","subject", "title"
         ]
     },
     groups: {
@@ -59,6 +71,9 @@ export const TableData = {
         ],
         create: [
             "name","description", "class"
+        ],
+        filter: [
+            "id","name","description", "class"
         ]
     },
     subjects: {
@@ -71,6 +86,9 @@ export const TableData = {
         ],
         create: [
             "code","title", "course"
+        ],
+        filter: [
+            "id","code","title", "course"
         ]
     },
     topics: {
@@ -83,6 +101,9 @@ export const TableData = {
         ],
         create: [
             "title","deadline", "unit"
+        ],
+        filter: [
+            "id","title","deadline", "unit"
         ]
     },
     votes: {
@@ -95,6 +116,9 @@ export const TableData = {
         ],
         create: [
             "post", "topic", "content", "originality", "clarity", "mean"
+        ],
+        filter: [
+            "id","user","post", "topic", "content", "originality", "clarity", "mean"
         ]
     },
     posts: {
@@ -107,6 +131,9 @@ export const TableData = {
         ],
         create: [
             "user","topic", "title", "type", "content"
+        ],
+        filter: [
+            "id","user","topic", "title", "type", "content"
         ]
     },
 

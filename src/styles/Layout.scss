@@ -194,8 +194,25 @@ main{
             display: flex;
             justify-content: end;
             column-gap: 7px;
-            width: 30%;
+            width: 40%;
             height: 70%;
+
+            .filter {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 0;
+              outline: solid #e0e0e0 0.85px;
+              aspect-ratio: 1/1;
+              height: 100%;
+              background-color: white;
+              border-radius: 5px;
+              cursor: pointer;
+              .icon {
+                font-size: 30px;
+                color: #33333399;
+              }
+            }
 
             .searchContainer {
               display: flex;
@@ -326,10 +343,8 @@ main{
   }
 }
 
-
-
-
 .edit-form{
   display: flex;
   flex-direction: column;
 }
+

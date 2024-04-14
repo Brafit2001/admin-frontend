@@ -17,7 +17,7 @@ const NavBar = () => {
         <header>
             <div className="content">
                 <div className="logo">
-                    <Link to="/">Logo</Link>
+                    <Link to="/clipclass">Logo</Link>
                 </div>
                 <div className="profile">
                     <div className="profile-image">

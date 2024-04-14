@@ -3,7 +3,8 @@ import {deleteSubject, getAllSubjects} from "../../../services/courses-ms/Subjec
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Subjects = () => {
     const [subjects, setSubjects] = useState([])
@@ -13,7 +14,7 @@ const Subjects = () => {
 
     const results = !search ? subjects : Filter(subjects, filterFields, checkedState, search)
     useEffect(() => {
-        getAllSubjects(setSubjects)
+        getAllSubjects().then((subjects) => setSubjects(subjects))
     }, []);
 
     return (

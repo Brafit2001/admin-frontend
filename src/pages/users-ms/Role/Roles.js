@@ -3,7 +3,8 @@ import MyTable from "../../../components/table/MyTable";
 import {deleteRole, getAllRoles} from "../../../services/users-ms/RoleService";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Roles = () => {
     const [roles, setRoles] = useState([])

@@ -1,8 +1,9 @@
 import {TableData} from "./table/TableData";
 import {useNavigate} from "react-router-dom";
+import {CheckElementInList, FormatDateToInput} from "../utils/AuxiliarFunctions";
 
 
-const MyForm = ({item, actionFunction, table, mode}) => {
+const MyForm = ({item, actionFunction, table, mode, selectList}) => {
 
     const navigate = useNavigate()
     function handleOnchange(key, e) {
@@ -16,15 +17,45 @@ const MyForm = ({item, actionFunction, table, mode}) => {
 
     }
 
+    function selectInput(item, key) {
+        const dateFields = ["deadline"]
+        const multimediaFields = ["image"]
+        const integerFields = ["code", "unit", ]
+        const selectFields = ["course", "subject", "class", "user", "post", "topic"]
+        if (CheckElementInList(selectFields, key)){
+            return (
+                <select name={key} id={key}>
+                    {
+                        selectList[key].sort().map((id) => {
+                            return <option value={id}>{id}</option>
+                        })
+                    }
+                </select>
+            )
+
+        } else if (CheckElementInList(multimediaFields, key)) {
+            return <input type="file" defaultValue={null} onChange={(e) => handleOnchange(key, e)}/>
+        }else if (CheckElementInList(integerFields, key)) {
+            return <input type="number" defaultValue={item[key]} onChange={(e) => handleOnchange(key, e)}/>
+        }else if (CheckElementInList(dateFields, key)){
+            const date = new Date(item[key.toLowerCase()])
+            return <input type="date" defaultValue={FormatDateToInput(date)} onChange={(e) => handleOnchange(key, e)}/>
+        }else if(key === "email"){
+            return <input type="email" pattern=".+@alumnos.uc3\.es" size="30" required defaultValue={item[key]} onChange={(e) => handleOnchange(key, e)}/>
+        }
+        else {
+            return <input type="text" defaultValue={item[key.toLowerCase()]} onChange={(e) => handleOnchange(key, e)}/>
+        }
+    }
+
     return (
         <form className="edit-form" action="">
             {
-                TableData[table][mode].map((key, index) => {
+                TableData[table][mode].map((key) => {
                     return (
                         <div key={key}>
                             <label htmlFor="">{key + ": "}</label>
-                            <input type="text" defaultValue={item[key.toLowerCase()]}
-                                   onChange={(e) => handleOnchange(key, e)}/>
+                            {selectInput(item, key)}
                         </div>
                     )
                 })

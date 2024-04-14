@@ -112,10 +112,10 @@ export const TableData = {
             "id","user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         editable: [
-            "post", "topic", "content", "originality", "clarity", "mean"
+            "user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         create: [
-            "post", "topic", "content", "originality", "clarity", "mean"
+            "user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         filter: [
             "id","user","post", "topic", "content", "originality", "clarity", "mean"

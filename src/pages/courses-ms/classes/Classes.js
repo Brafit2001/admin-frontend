@@ -3,7 +3,7 @@ import {deleteClass, getAllClasses} from "../../../services/courses-ms/ClassServ
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Classes = () => {
     const [classes, setClasses] = useState([])
@@ -13,7 +13,7 @@ const Classes = () => {
 
     const results = !search ? classes : Filter(classes, filterFields, checkedState, search)
     useEffect(() => {
-        getAllClasses(setClasses)
+        getAllClasses().then((classes) => setClasses(classes))
     }, []);
 
     return (

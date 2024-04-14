@@ -3,7 +3,8 @@ import {deletePost, getAllPosts} from "../../../services/votes-ms/PostService";
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -13,7 +14,7 @@ const Posts = () => {
 
     const results = !search ? posts : Filter(posts, filterFields, checkedState, search)
     useEffect(() => {
-        getAllPosts(setPosts)
+        getAllPosts().then((posts) => setPosts(posts))
     }, []);
 
     return (

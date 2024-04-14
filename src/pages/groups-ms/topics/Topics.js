@@ -2,8 +2,8 @@ import {useEffect, useState} from "react";
 import {deleteTopic, getAllTopics} from "../../../services/groups-ms/TopicService";
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
-import {Filter} from "../../../utils/Filter";
 import {TableData} from "../../../components/table/TableData";
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Topics = () => {
     const [topics, setTopics] = useState([])
@@ -13,7 +13,7 @@ const Topics = () => {
 
     const results = !search ? topics : Filter(topics, filterFields, checkedState, search)
     useEffect(() => {
-        getAllTopics(setTopics)
+        getAllTopics().then((topics) => setTopics(topics))
     }, []);
 
     return (

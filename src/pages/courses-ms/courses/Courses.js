@@ -3,7 +3,8 @@ import {deleteCourse, getAllCourses} from "../../../services/courses-ms/CourseSe
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
@@ -13,7 +14,7 @@ const Courses = () => {
 
     const results = !search ? courses : Filter(courses, filterFields, checkedState, search)
     useEffect(() => {
-        getAllCourses(setCourses)
+        getAllCourses().then((response) => setCourses(response))
     }, []);
 
     return (

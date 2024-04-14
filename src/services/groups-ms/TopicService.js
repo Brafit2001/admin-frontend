@@ -3,14 +3,14 @@ import axios from 'axios'
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8083/topics/`
 
-export const getAllTopics = (setTopics) =>
+export const getAllTopics = () =>
     axios
         .get(BASE_URL,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
         })
-        .then((response) => setTopics(response.data.data))
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 

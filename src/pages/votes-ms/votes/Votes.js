@@ -3,7 +3,8 @@ import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter";
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Votes = () => {
     const [votes, setVotes] = useState([])

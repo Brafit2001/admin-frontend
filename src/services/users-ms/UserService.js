@@ -1,17 +1,16 @@
 import axios from 'axios'
-import storage from "../../utils/storage";
 
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8080/users/`
 
-export const getAllUsers = (setUsers) =>
+export const getAllUsers = () =>
     axios
         .get(BASE_URL,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
         })
-        .then((response) => setUsers(response.data.data))
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 

@@ -2,7 +2,8 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getUserById} from "../services/users-ms/UserService";
 import {jwtDecode} from "jwt-decode";
-import Capitalize from "../utils/Capitalize";
+
+import Capitalize from "../utils/AuxiliarFunctions";
 
 const NavBar = () => {
 

@@ -3,7 +3,8 @@ import {deleteUser, getAllUsers} from "../../../services/users-ms/UserService";
 import MyTable from "../../../components/table/MyTable";
 import PageHeader from "../../../components/PageHeader";
 import {TableData} from "../../../components/table/TableData";
-import {Filter} from "../../../utils/Filter"
+
+import {Filter} from "../../../utils/AuxiliarFunctions";
 
 const Users = () => {
 
@@ -16,7 +17,7 @@ const Users = () => {
     const results = !search ? users : Filter(users, filterFields, checkedState, search)
 
     useEffect(() => {
-        getAllUsers(setUsers)
+        getAllUsers().then((users) => setUsers(users))
     }, []);
 
     return (

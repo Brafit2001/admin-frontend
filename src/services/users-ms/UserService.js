@@ -25,6 +25,28 @@ export const getUserById = (userId) =>
         .catch((error) => console.log(error))
 
 
+export const getUserRoles = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/roles`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+export const getUserGroups = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/groups`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const editUser = (user) =>
     axios
@@ -49,6 +71,17 @@ export const newUser = (user) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+export const  importUsers = (formData) =>
+    axios
+        .post(`${BASE_URL}import-csv`, formData,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN,
+                    'content-type': 'multipart/form-data'
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
 
 
 export const deleteUser = (userId) =>
@@ -62,7 +95,13 @@ export const deleteUser = (userId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-
-
-
+export const resetPassword = (user) =>
+    axios
+        .put(`${BASE_URL}${user.id}/reset-password`,user,{
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
 

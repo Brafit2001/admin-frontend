@@ -6,7 +6,7 @@ const ReadVote = () =>{
 
     return (
         <div>
-            <h1>ReadCourse</h1>
+            <h1>ReadVote</h1>
             <div>{Object.keys(course).map((key) => {
                 return (
                     <div>

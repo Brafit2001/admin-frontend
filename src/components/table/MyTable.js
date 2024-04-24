@@ -1,9 +1,8 @@
 import {TableData} from "./TableData";
 import {Link} from "react-router-dom";
-import TrashIcon from "../../resources/images/trash.svg"
-import EditIcon from "../../resources/images/edit.svg"
 import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
+import {CheckElementInList} from "../../utils/AuxiliarFunctions";
 
 const MyTable = ({content, table, deleteFunction}) => {
     function rowColor(index) {
@@ -15,6 +14,32 @@ const MyTable = ({content, table, deleteFunction}) => {
             return {backgroundColor: "#F9FAFB"}
         }
 
+    }
+
+    function selectLink(item, key){
+
+        const specialKeys = {
+            course: "courses",
+            subject: "subjects",
+            class: "classes",
+            user: "users",
+            post: "posts",
+            topic: "topics"
+        }
+
+        if (CheckElementInList(Object.keys(specialKeys), key)){
+            return (
+                <Link to={`/clipclass/${specialKeys[key]}/${item.id}`} state={item}>
+                    {item[key.toLowerCase()]}
+                </Link>
+            )
+        }else{
+            return (
+                <Link to={`${item.id}`} state={item}>
+                    {item[key.toLowerCase()]}
+                </Link>
+            )
+        }
     }
 
 
@@ -37,12 +62,10 @@ const MyTable = ({content, table, deleteFunction}) => {
                 {content && content.map((item, index) => {
                 return (
                     <tr className="row" style={rowColor(index)} key={index}>
-                        {TableData[table].headers.map((value, index) => {
+                        {TableData[table].headers.map((key, index) => {
                             return (
                                 <td className="cell" key={index}>
-                                    <Link to={`${item.id}`} state={item}>
-                                        {item[value.toLowerCase()]}
-                                    </Link>
+                                    {selectLink(item, key)}
                                 </td>
                             )
                         })}

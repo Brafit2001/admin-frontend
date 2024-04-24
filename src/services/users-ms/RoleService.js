@@ -1,11 +1,11 @@
 import axios from "axios";
 
-
+const BASE_URL = `http://localhost:8080/roles/`
 const TOKEN = localStorage.getItem("token")
 
 export const getAllRoles = (setRoles) =>
     axios
-        .get(`http://localhost:8080/roles/`,{
+        .get(BASE_URL,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -13,10 +13,21 @@ export const getAllRoles = (setRoles) =>
         .then((response) => setRoles(response.data.data))
         .catch((error) => console.log(error))
 
+export const getRoleUsers = (roleId) =>
+    axios
+        .get(`${BASE_URL}${roleId}/users`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const newRole = (role) =>
     axios
-        .post(`http://localhost:8080/roles/`,
+        .post(BASE_URL,
             role,{
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -27,7 +38,7 @@ export const newRole = (role) =>
 
 export const deleteRole = (roleId) =>
     axios
-        .delete(`http://localhost:8080/roles/${roleId}`,
+        .delete(`${BASE_URL}${roleId}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -38,7 +49,7 @@ export const deleteRole = (roleId) =>
 
 export const editRole = (role) =>
     axios
-        .put(`http://localhost:8080/roles/${role.id}`,
+        .put(`${BASE_URL}${role.id}`,
             role,{
                 headers: {
                     "Authorization": "Bearer " + TOKEN

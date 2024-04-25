@@ -1,16 +1,17 @@
 import axios from 'axios'
+import {checkParams} from "../../utils/AuxiliarFunctions";
 
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8084/votes/`
 
-export const getAllVotes = (setVotes) =>
+export const getAllVotes = (params) =>
     axios
-        .get(BASE_URL,{
+        .get(checkParams(params, BASE_URL),{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
         })
-        .then((response) => setVotes(response.data.data))
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 

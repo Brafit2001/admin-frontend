@@ -105,3 +105,26 @@ export const resetPassword = (user) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+
+export const deleteUserRole = (userId, roleId) =>
+    axios
+        .delete(`${BASE_URL}${userId}/roles/${roleId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+export const deleteUserGroup = (userId, groupId) =>
+    axios
+        .delete(`${BASE_URL}${userId}/groups/${groupId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+

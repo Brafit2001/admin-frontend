@@ -1,6 +1,9 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getUserGroups, getUserRoles} from "../../../services/users-ms/UserService";
+import {deleteUserGroup, deleteUserRole, getUserGroups, getUserRoles} from "../../../services/users-ms/UserService";
+import MyTable from "../../../components/table/MyTable";
+import {deleteGroup} from "../../../services/groups-ms/GroupService";
+import {deleteRole} from "../../../services/users-ms/RoleService";
 const ReadUser = () =>{
     const [roles, setRoles] = useState(null)
     const [groups, setGroups] = useState(null)
@@ -16,7 +19,7 @@ const ReadUser = () =>{
     }, [user.id]);
 
     return (
-        <div>
+        <div className={"content-2"}>
             <h1>ReadUser</h1>
             <div>
                 <div className="image">
@@ -31,26 +34,16 @@ const ReadUser = () =>{
                 </div>
             </div>
             <h1>Roles:</h1>
-            {
-                roles ? roles.map((role) => {
-                        return (
-                            <div>
-                                <p>role: {role.name}</p>
-                            </div>
-                        )
-                    }
-                ) : <p>No roles</p>
-            }
-            <h1>Groups</h1>
-            {
-                groups ? groups.map((group) => {
-                    return (
-                        <div>
-                            <p>Group: {group.name}</p>
-                        </div>
-                    )
-                }) : <p>No Groups</p>
-            }
+            <MyTable content={roles} table={"roles"}
+                     deleteFunction={deleteUserRole}
+                     extraDeleteParameter={user.id}
+                     style={{height: 200}}
+            />
+            <h1>Groups:</h1>
+            <MyTable content={groups} table={"groups"}
+                     deleteFunction={deleteUserGroup}
+                     extraDeleteParameter={user.id}
+                     style={{height: 200}}/>
         </div>
 
     )

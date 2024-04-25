@@ -47,6 +47,19 @@ export const deleteRole = (roleId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+
+export const deleteRoleUser = (roleId, userId) =>
+    axios
+        .delete(`${BASE_URL}${roleId}/users/${userId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+
 export const editRole = (role) =>
     axios
         .put(`${BASE_URL}${role.id}`,

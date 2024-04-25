@@ -72,6 +72,28 @@ export const deleteGroup = (groupId) =>
         .catch((error) => console.log(error))
 
 
+export const deleteGroupUser = (groupId, userId) =>
+    axios
+        .delete(`${BASE_URL}${groupId}/users/${userId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+export const deleteGroupTopic = (groupId, topicId) =>
+    axios
+        .delete(`${BASE_URL}${groupId}/topics/${topicId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
 
 
 

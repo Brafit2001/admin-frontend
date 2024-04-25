@@ -4,7 +4,7 @@ import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
 import {CheckElementInList} from "../../utils/AuxiliarFunctions";
 
-const MyTable = ({content, table, deleteFunction}) => {
+const MyTable = ({content, table, deleteFunction, extraDeleteParameter ,style}) => {
     function rowColor(index) {
 
         if (index % 2 === 0) {
@@ -16,7 +16,7 @@ const MyTable = ({content, table, deleteFunction}) => {
 
     }
 
-    function selectLink(item, key){
+    function selectLink(item, key, table){
 
         const specialKeys = {
             course: "courses",
@@ -35,7 +35,7 @@ const MyTable = ({content, table, deleteFunction}) => {
             )
         }else{
             return (
-                <Link to={`${item.id}`} state={item}>
+                <Link to={`/clipclass/${table}/${item.id}`} state={item}>
                     {item[key.toLowerCase()]}
                 </Link>
             )
@@ -45,7 +45,7 @@ const MyTable = ({content, table, deleteFunction}) => {
 
 
     return (
-        <table className="my-table">
+        <table className="my-table" style={style}>
             <thead>
                 <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>
                     {
@@ -59,26 +59,28 @@ const MyTable = ({content, table, deleteFunction}) => {
                 </tr>
             </thead>
             <tbody>
-                {content && content.map((item, index) => {
+                {content ? content.map((item, index) => {
                 return (
                     <tr className="row" style={rowColor(index)} key={index}>
                         {TableData[table].headers.map((key, index) => {
                             return (
                                 <td className="cell" key={index}>
-                                    {selectLink(item, key)}
+                                    {selectLink(item, key, table)}
                                 </td>
                             )
                         })}
                         <td className="cell">
                             <div className="action-buttons">
                                 <EditButton item={item}/>
-                                <DeleteButton item={item} deleteFunction={deleteFunction}/>
+                                <DeleteButton item={item}
+                                              extraDeleteParameter={extraDeleteParameter}
+                                              deleteFunction={deleteFunction}
+                                />
                             </div>
                         </td>
                     </tr>
-                )
-
-            })}
+                )}) : <p>No results</p>
+                }
             </tbody>
         </table>
     )

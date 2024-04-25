@@ -37,6 +37,25 @@ export const TableData = {
             "name"
         ]
     },
+    permissions: {
+        title: "Permissions",
+        headers: [
+            "id","name"
+        ],
+        editable: [
+            "name"
+        ],
+        create: [
+            "name"
+        ],
+        filter: [
+            "id", "name"
+        ],
+        show: [
+            "name"
+        ]
+    }
+    ,
     courses: {
         title: "Courses",
         headers: [

@@ -14,7 +14,7 @@ const Votes = () => {
 
     const results = !search ? votes : Filter(votes, filterFields, checkedState, search)
     useEffect(() => {
-        getAllVotes(setVotes)
+        getAllVotes().then((votes) => setVotes(votes))
     }, []);
 
     return (

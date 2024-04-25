@@ -1,6 +1,8 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getRoleUsers} from "../../../services/users-ms/RoleService";
+import {deleteRoleUser, getRoleUsers} from "../../../services/users-ms/RoleService";
+import {deleteUserRole} from "../../../services/users-ms/UserService";
+import MyTable from "../../../components/table/MyTable";
 
 const ReadRole = () =>{
     const [users, setUsers] = useState(null)
@@ -12,7 +14,7 @@ const ReadRole = () =>{
     }, [role.id]);
 
     return (
-        <div>
+        <div className={"content-2"}>
             <h1>ReadRole</h1>
             <div>{Object.keys(role).map((key) => {
                 return (
@@ -22,15 +24,11 @@ const ReadRole = () =>{
                 )
             })}</div>
             <h1>Users:</h1>
-            {
-                users ? users.map((user) => {
-                    return (
-                        <div>
-                            <p>User id: {user.id}</p>
-                        </div>
-                    )
-                }) : <p>No Users</p>
-            }
+            <MyTable content={users} table={"users"}
+                     deleteFunction={deleteRoleUser}
+                     extraDeleteParameter={role.id}
+                     style={{height: 600}}
+            />
         </div>
 
     )

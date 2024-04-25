@@ -60,6 +60,18 @@ export const deleteTopic = (topicId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+export const deleteTopicGroup = (topicId, groupId) =>
+    axios
+        .delete(`${BASE_URL}${topicId}/groups/${groupId}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+
 
 
 

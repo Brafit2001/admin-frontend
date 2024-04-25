@@ -6,6 +6,17 @@ const Capitalize = (word) => {
     )
 }
 export default Capitalize;
+
+export function checkParams(params, url) {
+    if (params !== null && params !== undefined) {
+        let chain = "?"
+        Object.keys(params).forEach((key) => chain += `${key}=${params[key]}`)
+        return url + chain
+    } else {
+        return url
+    }
+}
+
 export const CheckElementInList = (list, element) => {
     return list.some((item) => item === element)
 }

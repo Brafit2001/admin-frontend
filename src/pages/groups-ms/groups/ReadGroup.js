@@ -32,13 +32,13 @@ const ReadGroup = () =>{
             <h1>Users:</h1>
             <MyTable content={users} table={"users"}
                      deleteFunction={deleteGroupUser}
-                     extraDeleteParameter={group.id}
+                     deleteProps={{groupId: group.id}}
                      style={{height: 200}}
             />
             <h1>Topics:</h1>
             <MyTable content={topics} table={"topics"}
                      deleteFunction={deleteGroupTopic}
-                     extraDeleteParameter={group.id}
+                     deleteProps={{groupId: group.id}}
                      style={{height: 200}}
             />
         </div>

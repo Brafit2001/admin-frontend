@@ -39,9 +39,9 @@ export const newClass = (class_item) =>
 
 
 
-export const deleteClass = (class_itemId) =>
+export const deleteClass = (props) =>
     axios
-        .delete(BASE_URL + class_itemId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

@@ -40,9 +40,9 @@ export const newPost = (post) =>
 
 
 
-export const deletePost = (postId) =>
+export const deletePost = (props) =>
     axios
-        .delete(BASE_URL + postId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

@@ -17,6 +17,7 @@ const NavBar = () => {
     useEffect(() => {
         const userid = jwtDecode(localStorage.getItem("token"))["userId"]
         getUserById(userid).then((user) => setUser(user))
+
     }, []);
 
     return (
@@ -27,6 +28,10 @@ const NavBar = () => {
                 </div>
                 <div className="profile">
                     <div className="profile-image">
+                        {
+                            user &&
+                            <img src={`data:image/png;base64,${user.image}`} alt=""/>
+                        }
 
                     </div>
                     {

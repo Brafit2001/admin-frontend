@@ -40,7 +40,7 @@ export const TableData = {
     permissions: {
         title: "Permissions",
         headers: [
-            "id","name"
+            "id","name", "type"
         ],
         editable: [
             "name"

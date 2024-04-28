@@ -49,9 +49,9 @@ export const newTopic = (topic) =>
 
 
 
-export const deleteTopic = (topicId) =>
+export const deleteTopic = (props) =>
     axios
-        .delete(BASE_URL + topicId,
+        .delete(BASE_URL + props,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -60,9 +60,9 @@ export const deleteTopic = (topicId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const deleteTopicGroup = (topicId, groupId) =>
+export const deleteTopicGroup = (props) =>
     axios
-        .delete(`${BASE_URL}${topicId}/groups/${groupId}`,
+        .delete(`${BASE_URL}${props.topicId}/groups/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

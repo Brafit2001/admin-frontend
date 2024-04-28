@@ -2,8 +2,6 @@ import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {deleteUserGroup, deleteUserRole, getUserGroups, getUserRoles} from "../../../services/users-ms/UserService";
 import MyTable from "../../../components/table/MyTable";
-import {deleteGroup} from "../../../services/groups-ms/GroupService";
-import {deleteRole} from "../../../services/users-ms/RoleService";
 const ReadUser = () =>{
     const [roles, setRoles] = useState(null)
     const [groups, setGroups] = useState(null)
@@ -36,13 +34,13 @@ const ReadUser = () =>{
             <h1>Roles:</h1>
             <MyTable content={roles} table={"roles"}
                      deleteFunction={deleteUserRole}
-                     extraDeleteParameter={user.id}
+                     deleteProps={{userId: user.id}}
                      style={{height: 200}}
             />
             <h1>Groups:</h1>
             <MyTable content={groups} table={"groups"}
                      deleteFunction={deleteUserGroup}
-                     extraDeleteParameter={user.id}
+                     deleteProps={{userId: user.id}}
                      style={{height: 200}}/>
         </div>
 

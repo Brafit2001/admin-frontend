@@ -4,7 +4,7 @@ import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
 import {CheckElementInList} from "../../utils/AuxiliarFunctions";
 
-const MyTable = ({content, table, deleteFunction, extraDeleteParameter ,style}) => {
+const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
     function rowColor(index) {
 
         if (index % 2 === 0) {
@@ -14,6 +14,11 @@ const MyTable = ({content, table, deleteFunction, extraDeleteParameter ,style}) 
             return {backgroundColor: "#F9FAFB"}
         }
 
+    }
+
+    function handleDeleteProps(item){
+        if (table === "permissions") return   {...deleteProps, id: item.id, type: item.type}
+        else return {...deleteProps, id: item.id}
     }
 
     function selectLink(item, key, table){
@@ -72,14 +77,13 @@ const MyTable = ({content, table, deleteFunction, extraDeleteParameter ,style}) 
                         <td className="cell">
                             <div className="action-buttons">
                                 <EditButton item={item}/>
-                                <DeleteButton item={item}
-                                              extraDeleteParameter={extraDeleteParameter}
+                                <DeleteButton deleteProps={handleDeleteProps(item)}
                                               deleteFunction={deleteFunction}
                                 />
                             </div>
                         </td>
                     </tr>
-                )}) : <p>No results</p>
+                )}) : <tr><td>No result</td></tr>
                 }
             </tbody>
         </table>

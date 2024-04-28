@@ -39,9 +39,9 @@ export const newCourse = (course) =>
 
 
 
-export const deleteCourse = (courseId) =>
+export const deleteCourse = (props) =>
     axios
-        .delete(BASE_URL + courseId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

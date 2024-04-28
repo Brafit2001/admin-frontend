@@ -60,9 +60,9 @@ export const newGroup = (group) =>
 
 
 
-export const deleteGroup = (groupId) =>
+export const deleteGroup = (props) =>
     axios
-        .delete(BASE_URL + groupId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -72,9 +72,9 @@ export const deleteGroup = (groupId) =>
         .catch((error) => console.log(error))
 
 
-export const deleteGroupUser = (groupId, userId) =>
+export const deleteGroupUser = (props) =>
     axios
-        .delete(`${BASE_URL}${groupId}/users/${userId}`,
+        .delete(`${BASE_URL}${props.groupId}/users/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -83,9 +83,9 @@ export const deleteGroupUser = (groupId, userId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const deleteGroupTopic = (groupId, topicId) =>
+export const deleteGroupTopic = (props) =>
     axios
-        .delete(`${BASE_URL}${groupId}/topics/${topicId}`,
+        .delete(`${BASE_URL}${props.groupId}/topics/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

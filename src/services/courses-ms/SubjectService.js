@@ -39,9 +39,9 @@ export const newSubject = (subject) =>
 
 
 
-export const deleteSubject = (subjectId) =>
+export const deleteSubject = (props) =>
     axios
-        .delete(BASE_URL + subjectId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

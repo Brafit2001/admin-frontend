@@ -84,9 +84,9 @@ export const  importUsers = (formData) =>
         .catch((error) => console.log(error))
 
 
-export const deleteUser = (userId) =>
+export const deleteUser = (props) =>
     axios
-        .delete(BASE_URL + userId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -106,9 +106,9 @@ export const resetPassword = (user) =>
         .catch((error) => console.log(error))
 
 
-export const deleteUserRole = (userId, roleId) =>
+export const deleteUserRole = (props) =>
     axios
-        .delete(`${BASE_URL}${userId}/roles/${roleId}`,
+        .delete(`${BASE_URL}${props.userId}/roles/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -117,9 +117,9 @@ export const deleteUserRole = (userId, roleId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const deleteUserGroup = (userId, groupId) =>
+export const deleteUserGroup = (props) =>
     axios
-        .delete(`${BASE_URL}${userId}/groups/${groupId}`,
+        .delete(`${BASE_URL}${props.userId}/groups/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

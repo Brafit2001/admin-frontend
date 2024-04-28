@@ -23,6 +23,17 @@ export const getRoleUsers = (roleId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getRolePermissions = (roleId) =>
+    axios
+        .get(`${BASE_URL}${roleId}/permissions`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 
 export const newRole = (role) =>
@@ -36,9 +47,9 @@ export const newRole = (role) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const deleteRole = (roleId) =>
+export const deleteRole = (props) =>
     axios
-        .delete(`${BASE_URL}${roleId}`,
+        .delete(`${BASE_URL}${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -48,15 +59,26 @@ export const deleteRole = (roleId) =>
         .catch((error) => console.log(error))
 
 
-export const deleteRoleUser = (roleId, userId) =>
+export const deleteRoleUser = (props) =>
     axios
-        .delete(`${BASE_URL}${roleId}/users/${userId}`,
+        .delete(`${BASE_URL}${props.roleId}/users/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
             })
         .then((response) => response)
+        .catch((error) => console.log(error))
+
+
+export const deleteRolePermission = (props) =>
+    axios
+        .delete(`${BASE_URL}${props.roleId}/permissions/${props.id}?type=${props.type}`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 

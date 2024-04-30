@@ -2,7 +2,7 @@ import {TableData} from "./TableData";
 import {Link} from "react-router-dom";
 import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
-import {CheckElementInList} from "../../utils/AuxiliarFunctions";
+import {CheckElementInList, readImage} from "../../utils/AuxiliarFunctions";
 
 const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
     function rowColor(index) {
@@ -15,6 +15,7 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
         }
 
     }
+
 
     function handleDeleteProps(item){
         if (table === "permissions") return   {...deleteProps, id: item.id, type: item.type}
@@ -41,12 +42,15 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
         }else{
             return (
                 <Link to={`/clipclass/${table}/${item.id}`} state={item}>
-                    {item[key.toLowerCase()]}
+                    {(key === "image") ?
+                        <div className="profile-image">
+                            <img src={readImage(item, table)} alt=""/>
+                        </div>
+                        : item[key.toLowerCase()]}
                 </Link>
             )
         }
     }
-
 
 
     return (

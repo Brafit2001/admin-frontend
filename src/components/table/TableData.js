@@ -1,3 +1,7 @@
+import User1 from "../../resources/images/user1.png"
+import User2 from "../../resources/images/user2.png"
+import User3 from "../../resources/images/user3.png"
+import User4 from "../../resources/images/user4.png"
 
 
 export const TableData = {
@@ -17,7 +21,13 @@ export const TableData = {
         ],
         show: [
             "name", "id" ,"username", "surname", "email", "image"
-        ]
+        ],
+        defaultImages: {
+            user1: User1,
+            user2: User2,
+            user3: User3,
+            user4: User4
+        }
     },
     roles: {
         title: "Roles",

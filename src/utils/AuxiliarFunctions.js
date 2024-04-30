@@ -1,3 +1,5 @@
+import {TableData} from "../components/table/TableData";
+
 const Capitalize = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase()
     const remainingLetters = word.slice(1)
@@ -6,6 +8,23 @@ const Capitalize = (word) => {
     )
 }
 export default Capitalize;
+
+export function readImage(item, table){
+    if (item === null || item === undefined) return ""
+
+    const defautlImages =  TableData[table]["defaultImages"]
+    const defaultImagesList = Object.keys(defautlImages)
+
+    if (typeof item.image === "object") {
+        return URL.createObjectURL(item.image)
+    }
+    else if (CheckElementInList(defaultImagesList, item.image)){
+        return defautlImages[item.image]
+    }else {
+        return `data:image/png;base64,${item.image}`
+    }
+
+}
 
 export function checkParams(params, url) {
     if (params !== null && params !== undefined) {

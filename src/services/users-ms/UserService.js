@@ -48,16 +48,22 @@ export const getUserGroups = (userId) =>
 
 
 
-export const editUser = (user) =>
-    axios
+export const editUser = (user) => {
+    const bodyFormData = new FormData();
+    Object.keys(user).forEach((key) => {
+        bodyFormData.append(key, user[key]);
+    })
+    return axios
         .put(BASE_URL + user.id,
-            user,{
+            bodyFormData, {
                 headers: {
-                    "Authorization": "Bearer " + TOKEN
+                    "Authorization": "Bearer " + TOKEN,
+                    "Content-Type": "multipart/form-data"
                 }
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+}
 
 
 export const newUser = (user) =>

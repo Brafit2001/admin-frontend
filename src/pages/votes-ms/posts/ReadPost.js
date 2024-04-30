@@ -1,7 +1,5 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {deleteTopicGroup, getTopicGroups} from "../../../services/groups-ms/TopicService";
-import {getAllPosts, getPostVotes} from "../../../services/votes-ms/PostService";
 import MyTable from "../../../components/table/MyTable";
 import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
 

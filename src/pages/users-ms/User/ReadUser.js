@@ -2,6 +2,7 @@ import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {deleteUserGroup, deleteUserRole, getUserGroups, getUserRoles} from "../../../services/users-ms/UserService";
 import MyTable from "../../../components/table/MyTable";
+import {readImage} from "../../../utils/AuxiliarFunctions";
 const ReadUser = () =>{
     const [roles, setRoles] = useState(null)
     const [groups, setGroups] = useState(null)
@@ -18,10 +19,9 @@ const ReadUser = () =>{
 
     return (
         <div className={"content-2"}>
-            <h1>ReadUser</h1>
-            <div>
+            <div className={"image-info"}>
                 <div className="image">
-                    IMAGE: {user.image}
+                    <img src={readImage(user, "users")} alt=""/>
                 </div>
                 <div className="info">
                     <p>ID: {user.id}</p>

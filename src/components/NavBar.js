@@ -3,7 +3,8 @@ import {useEffect, useState} from "react";
 import {getUserById} from "../services/users-ms/UserService";
 import {jwtDecode} from "jwt-decode";
 
-import Capitalize from "../utils/AuxiliarFunctions";
+import Capitalize, {readImage} from "../utils/AuxiliarFunctions";
+
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const NavBar = () => {
         localStorage.clear()
         navigate("/")
     };
+
 
     useEffect(() => {
         const userid = jwtDecode(localStorage.getItem("token"))["userId"]
@@ -28,11 +30,7 @@ const NavBar = () => {
                 </div>
                 <div className="profile">
                     <div className="profile-image">
-                        {
-                            user &&
-                            <img src={`data:image/png;base64,${user.image}`} alt=""/>
-                        }
-
+                        <img src={readImage(user, "users")} alt=""/>
                     </div>
                     {
                         user &&

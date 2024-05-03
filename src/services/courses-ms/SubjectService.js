@@ -1,11 +1,12 @@
 import axios from 'axios'
+import {checkParams} from "../../utils/AuxiliarFunctions";
 
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8081/subjects/`
 
-export const getAllSubjects = () =>
+export const getAllSubjects = (params) =>
     axios
-        .get(BASE_URL,{
+        .get(checkParams(params, BASE_URL),{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }

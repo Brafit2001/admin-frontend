@@ -1,16 +1,17 @@
 import axios from 'axios'
+import {checkParams} from "../../utils/AuxiliarFunctions";
 
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8083/groups/`
 
-export const getAllGroups = (setGroups) =>
+export const getAllGroups = (params) =>
     axios
-        .get(BASE_URL,{
+        .get(checkParams(params, BASE_URL),{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
         })
-        .then((response) => setGroups(response.data.data))
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 

@@ -6,7 +6,7 @@ const Groups = () => {
     const [groups, setGroups] = useState([])
 
     useEffect(() => {
-        getAllGroups(setGroups)
+        getAllGroups().then((groups) => setGroups(groups))
     }, []);
 
     return (

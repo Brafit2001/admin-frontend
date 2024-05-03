@@ -7,6 +7,8 @@ import {
     getRoleUsers
 } from "../../../services/users-ms/RoleService";
 import MyTableOld from "../../../components/table/MyTableOld";
+import MyTable from "../../../components/table/MyTable";
+import {deleteUserRole} from "../../../services/users-ms/UserService";
 
 const ReadRole = () =>{
     const [users, setUsers] = useState(null)
@@ -29,14 +31,13 @@ const ReadRole = () =>{
                     </div>
                 )
             })}</div>
-            <h1>Users:</h1>
-            <MyTableOld content={users} table={"users"}
+
+            <MyTable content={users} table={"users"}
                         deleteFunction={deleteRoleUser}
                         deleteProps={{roleId: role.id}}
-                        style={{height: 600}}
+                        style={{height: 200}}
             />
-            <h1>Permissions:</h1>
-            <MyTableOld content={permissions} table={"permissions"}
+            <MyTable content={permissions} table={"permissions"}
                         deleteFunction={deleteRolePermission}
                         deleteProps={{roleId: role.id}}
                         style={{height: 200}}

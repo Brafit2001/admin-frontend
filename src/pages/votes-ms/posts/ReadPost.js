@@ -5,6 +5,7 @@ import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
 import {readImage} from "../../../utils/AuxiliarFunctions";
 import {ModalContent} from "../../../components/Modal";
 import {getPostById} from "../../../services/votes-ms/PostService";
+import MyTable from "../../../components/table/MyTable";
 
 const ReadPost = () =>{
     const location = useLocation()
@@ -52,8 +53,7 @@ const ReadPost = () =>{
                             <p>USER: {post.user}</p>
                         </div>
                     </div>
-                    <h1>Votes:</h1>
-                    <MyTableOld content={votes} table={"votes"} deleteFunction={deleteVote} style={{height: 200}}/>
+                    <MyTable content={votes} table={"votes"} deleteFunction={deleteVote} style={{height: 200}}/>
                 </div>
             }
         </div>

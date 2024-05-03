@@ -7,6 +7,7 @@ import {
     getGroupUsers
 } from "../../../services/groups-ms/GroupService";
 import MyTableOld from "../../../components/table/MyTableOld";
+import MyTable from "../../../components/table/MyTable";
 
 const ReadGroup = () =>{
     const [users, setUsers] = useState(null)
@@ -29,14 +30,12 @@ const ReadGroup = () =>{
                     </div>
                 )
             })}</div>
-            <h1>Users:</h1>
-            <MyTableOld content={users} table={"users"}
+            <MyTable content={users} table={"users"}
                         deleteFunction={deleteGroupUser}
                         deleteProps={{groupId: group.id}}
                         style={{height: 200}}
             />
-            <h1>Topics:</h1>
-            <MyTableOld content={topics} table={"topics"}
+            <MyTable content={topics} table={"topics"}
                         deleteFunction={deleteGroupTopic}
                         deleteProps={{groupId: group.id}}
                         style={{height: 200}}

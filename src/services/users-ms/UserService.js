@@ -65,7 +65,6 @@ export const editUser = (user) => {
         .catch((error) => console.log(error))
 }
 
-
 export const newUser = (user) =>
     axios
         .post(BASE_URL,
@@ -101,17 +100,6 @@ export const deleteUser = (props) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const resetPassword = (user) =>
-    axios
-        .put(`${BASE_URL}${user.id}/reset-password`,user,{
-                headers: {
-                    "Authorization": "Bearer " + TOKEN
-                }
-            })
-        .then((response) => response)
-        .catch((error) => console.log(error))
-
-
 export const deleteUserRole = (props) =>
     axios
         .delete(`${BASE_URL}${props.userId}/roles/${props.id}`,
@@ -133,4 +121,17 @@ export const deleteUserGroup = (props) =>
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+
+
+
+export const resetPassword = (user) =>
+    axios
+        .put(`${BASE_URL}${user.id}/reset-password`,user,{
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
 

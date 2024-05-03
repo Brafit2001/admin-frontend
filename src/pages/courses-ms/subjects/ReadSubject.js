@@ -1,6 +1,5 @@
 import {useLocation} from "react-router-dom";
 import MyTable from "../../../components/table/MyTable";
-import {deleteSubject} from "../../../services/courses-ms/SubjectService";
 import {useEffect, useState} from "react";
 import {deleteClass, getAllClasses} from "../../../services/courses-ms/ClassService";
 
@@ -25,7 +24,9 @@ const ReadSubject = () =>{
                 )
             })}
             </div>
-            <MyTable content={classes} table={"classes"} deleteFunction={deleteClass} style={{height: 200}}/>
+            <MyTable content={classes} table={"classes"}
+                     createPath={"new-class"}
+                     deleteFunction={deleteClass} style={{height: 200}}/>
         </div>
 
 

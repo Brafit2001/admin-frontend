@@ -10,7 +10,9 @@ const Courses = () => {
     }, []);
 
     return (
-        <MyTable content={courses} table={"courses"} deleteFunction={deleteCourse}/>
+        <div className="content-2">
+            <MyTable content={courses} table={"courses"} deleteFunction={deleteCourse}/>
+        </div>
     );
 };
 

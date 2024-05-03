@@ -14,6 +14,17 @@ export const getAllGroups = (params) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getGroupById = (groupId) =>
+    axios
+        .get(BASE_URL + groupId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const getGroupUsers = (userId) =>
     axios
@@ -94,6 +105,29 @@ export const deleteGroupTopic = (props) =>
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+
+export const assignGroup = (body) =>
+    axios
+        .post(`${BASE_URL}assign-user-to-group`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+export const assignTopic = (body) =>
+    axios
+        .post(`${BASE_URL}assign-topic-to-group`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 
 

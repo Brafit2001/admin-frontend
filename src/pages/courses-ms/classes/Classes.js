@@ -9,7 +9,11 @@ const Classes = () => {
         getAllClasses().then((classes) => setClasses(classes))
     }, []);
 
-    return (<MyTable content={classes} table={"classes"} deleteFunction={deleteClass}/>);
+    return (
+        <div className="content-2">
+            <MyTable content={classes} table={"classes"} deleteFunction={deleteClass}/>
+        </div>
+    );
 };
 
 export default Classes;

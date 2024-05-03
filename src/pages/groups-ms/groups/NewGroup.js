@@ -2,14 +2,19 @@ import MyForm from "../../../components/form/MyForm";
 import {newGroup} from "../../../services/groups-ms/GroupService";
 import {useEffect, useState} from "react";
 import {getAllClasses} from "../../../services/courses-ms/ClassService";
+import {useLocation} from "react-router-dom";
 
 const NewGroup = () =>{
 
     const [classesIds, setClassesIds] = useState([])
+
+    const path = useLocation().pathname.split('/')
+    const classId = parseInt(path[path.length - 2]) || null
+
     const group = {
         name: null,
         description: null,
-        class: null
+        class: classId ? classId : classesIds.sort()[0]
     }
 
     useEffect(() => {

@@ -10,7 +10,9 @@ const Subjects = () => {
     }, []);
 
     return (
-        <MyTable content={subjects} table={"subjects"} deleteFunction={deleteSubject}/>
+        <div className="content-2">
+            <MyTable content={subjects} table={"subjects"} deleteFunction={deleteSubject}/>
+        </div>
     );
 };
 

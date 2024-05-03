@@ -13,6 +13,17 @@ export const getAllTopics = () =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getTopicById = (topicId) =>
+    axios
+        .get(BASE_URL + topicId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 export const getTopicGroups = (topicId) =>
     axios
         .get(`${BASE_URL}${topicId}/groups`,{

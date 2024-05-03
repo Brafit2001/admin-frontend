@@ -1,7 +1,5 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {deleteClass, getAllClasses} from "../../../services/courses-ms/ClassService";
-import {deleteVote} from "../../../services/votes-ms/VoteService";
 import MyTable from "../../../components/table/MyTable";
 import {deleteSubject, getAllSubjects} from "../../../services/courses-ms/SubjectService";
 
@@ -10,10 +8,12 @@ const ReadCourse = () =>{
     const location = useLocation()
     const course  = location.state
 
+
+
     useEffect(() => {
         const params = {course: course.id}
         getAllSubjects(params).then((subjects) => setSubjects(subjects))
-    }, []);
+    }, [course.id]);
 
     return (
         <div className={"content-2"}>
@@ -25,7 +25,12 @@ const ReadCourse = () =>{
                     </div>
                 )
             })}</div>
-            <MyTable content={subjects} table={"subjects"} deleteFunction={deleteSubject} style={{height: 200}}/>
+            <MyTable content={subjects}
+                     createPath={"new-subject"}
+                     table={"subjects"}
+                     deleteFunction={deleteSubject}
+                     style={{height: 200}}
+            />
         </div>
 
     )

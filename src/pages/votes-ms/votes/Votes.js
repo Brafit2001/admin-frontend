@@ -10,7 +10,9 @@ const Votes = () => {
     }, []);
 
     return (
-        <MyTable content={votes} table={"votes"} deleteFunction={deleteVote}/>
+        <div className="content-2">
+            <MyTable content={votes} table={"votes"} deleteFunction={deleteVote}/>
+        </div>
     );
 };
 

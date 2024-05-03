@@ -1,6 +1,5 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import MyTableOld from "../../../components/table/MyTableOld";
 import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
 import {readImage} from "../../../utils/AuxiliarFunctions";
 import {ModalContent} from "../../../components/Modal";
@@ -53,7 +52,11 @@ const ReadPost = () =>{
                             <p>USER: {post.user}</p>
                         </div>
                     </div>
-                    <MyTable content={votes} table={"votes"} deleteFunction={deleteVote} style={{height: 200}}/>
+                    <MyTable content={votes}
+                             table={"votes"}
+                             createPath={"new-vote"}
+                             deleteFunction={deleteVote}
+                             style={{height: 200}}/>
                 </div>
             }
         </div>

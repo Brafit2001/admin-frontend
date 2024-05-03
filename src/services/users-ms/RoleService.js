@@ -13,6 +13,16 @@ export const getAllRoles = () =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getRoleById = (roleId) =>
+    axios
+        .get(`${BASE_URL}${roleId}`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
 export const getRoleUsers = (roleId) =>
     axios
         .get(`${BASE_URL}${roleId}/users`,{
@@ -23,6 +33,7 @@ export const getRoleUsers = (roleId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+
 export const getRolePermissions = (roleId) =>
     axios
         .get(`${BASE_URL}${roleId}/permissions`,{
@@ -32,7 +43,6 @@ export const getRolePermissions = (roleId) =>
         })
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
-
 
 
 
@@ -93,4 +103,13 @@ export const editRole = (role) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+export const assignRole = (body) =>
+    axios
+        .post(`${BASE_URL}assign-user-to-role`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
 

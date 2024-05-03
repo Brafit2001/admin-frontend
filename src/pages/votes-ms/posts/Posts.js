@@ -18,7 +18,11 @@ const Posts = () => {
         }
     }, []);
 
-    return (<MyTable content={posts} table={"posts"} deleteFunction={deletePost}/>);
+    return (
+        <div className="content-2">
+            <MyTable content={posts} table={"posts"} deleteFunction={deletePost}/>
+        </div>
+    );
 };
 
 export default Posts

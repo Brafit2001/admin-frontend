@@ -10,7 +10,9 @@ const Groups = () => {
     }, []);
 
     return (
-        <MyTable content={groups} table={"groups"} deleteFunction={deleteGroup}/>
+        <div className="content-2">
+            <MyTable content={groups} table={"groups"} deleteFunction={deleteGroup}/>
+        </div>
     );
 };
 

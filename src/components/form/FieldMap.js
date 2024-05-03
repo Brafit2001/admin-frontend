@@ -20,8 +20,9 @@ const FieldMap = ({ fieldType, fieldKey, item, selectList, table}) => {
         case 'select':
             return (
                 <select name={fieldKey} id={fieldKey} onChange={(e) => handleOnchange(fieldKey, e)}>
+                    <option value={item[fieldKey]} key={item[fieldKey]}>{item[fieldKey]}</option>
                     {selectList[fieldKey].sort().map((id) => (
-                        <option value={id} key={id}>{id}</option>
+                        (item[fieldKey] !== id) && <option value={id} key={id}>{id}</option>
                     ))}
                 </select>
             );

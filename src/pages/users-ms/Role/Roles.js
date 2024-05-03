@@ -11,7 +11,9 @@ const Roles = () => {
     }, []);
 
     return (
-        <MyTable content={roles} table={"roles"} deleteFunction={deleteRole}/>
+        <div className="content-2">
+            <MyTable content={roles} table={"roles"} deleteFunction={deleteRole}/>
+        </div>
     );
 };
 

@@ -10,7 +10,7 @@ import {Filter} from "../../utils/AuxiliarFunctions";
 
 
 
-const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible}) => {
+const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible, createPath = "new"}) => {
 
     const filterFields = TableData[table]["filter"]
     const [search,setSearch ] = useState("")
@@ -64,9 +64,8 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
 
 
     return (
-        <div className="content-2">
-            <PageHeader title={table} createPath={"new"} setQuery={setSearch}
-                        query={search} filter={checkedState}
+        <div>
+            <PageHeader title={table} createPath={createPath} setQuery={setSearch} query={search} filter={checkedState}
                         setFilter={setCheckedState}/>
             <table className="my-table" style={style}>
                 <thead>

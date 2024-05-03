@@ -23,9 +23,10 @@ const MyForm = ({item, actionFunction, table, mode, selectList}) => {
         const integerFields = ["code", "unit", ]
 
         let fieldType = "default";
-        if (CheckElementInList(keyFields, key)) fieldType = key
+        if (key === "content" && table === "votes")  fieldType = "number"
         else if (CheckElementInList(selectFields, key)) fieldType = "select";
         else if (CheckElementInList(integerFields, key)) fieldType = "number";
+        else if (CheckElementInList(keyFields, key)) fieldType = key
 
         return (<FieldMap fieldType={fieldType} fieldKey={key} item={item} table={table} selectList={selectList}/>)
 

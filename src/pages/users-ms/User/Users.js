@@ -13,7 +13,9 @@ const Users = () => {
     }, []);
 
     return (
-        <MyTable content={users} table={"users"} deleteFunction={deleteUser}/>
+        <div className="content-2">
+            <MyTable content={users} table={"users"} deleteFunction={deleteUser}/>
+        </div>
     );
 };
 

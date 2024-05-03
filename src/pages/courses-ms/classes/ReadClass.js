@@ -23,7 +23,11 @@ const ReadClass = () =>{
                     </div>
                 )
             })}</div>
-            <MyTable content={groups} table={"groups"} deleteFunction={deleteGroup} style={{height: 700}}/>
+            <MyTable content={groups}
+                     table={"groups"}
+                     createPath={"new-group"}
+                     deleteFunction={deleteGroup}
+                     style={{height: 700}}/>
         </div>
 
     )

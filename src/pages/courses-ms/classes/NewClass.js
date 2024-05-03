@@ -2,12 +2,17 @@ import MyForm from "../../../components/form/MyForm";
 import {newClass} from "../../../services/courses-ms/ClassService";
 import {useEffect, useState} from "react";
 import {getAllSubjects} from "../../../services/courses-ms/SubjectService";
+import {useLocation} from "react-router-dom";
 
 const NewClass = () =>{
 
     const [subjectsIds, setSubjectsIds] = useState([])
+
+    const path = useLocation().pathname.split('/')
+    const subjectId = parseInt(path[path.length - 2]) || null
+
     const class_item = {
-        subject: null,
+        subject: subjectId ? subjectId : subjectsIds.sort()[0],
         title: null,
         image: null
     }

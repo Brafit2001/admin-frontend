@@ -90,16 +90,16 @@ export const TableData = {
             "id","subject", "title"
         ],
         editable: [
-            "subject", "title", "image"
+            "subject", "title"
         ],
         create: [
-            "subject", "title", "image"
+            "subject", "title"
         ],
         filter: [
             "id","subject", "title"
         ],
         show: [
-            "title", "image"
+            "title"
         ]
     },
     groups: {

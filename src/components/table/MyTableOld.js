@@ -4,20 +4,12 @@ import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
 import {CheckElementInList, readImage} from "../../utils/AuxiliarFunctions";
 import {Grid} from "react-loader-spinner";
-import PageHeader from "../PageHeader";
-import {useState} from "react";
-import {Filter} from "../../utils/AuxiliarFunctions";
 
 
+const MyTableOld = ({content, table, deleteFunction, deleteProps ,style}) => {
 
-const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
+    function rowColor(index) {
 
-    const filterFields = TableData[table]["filter"]
-    const [search,setSearch ] = useState("")
-    const [checkedState, setCheckedState] = useState(new Array(filterFields.length).fill(true));
-    const results = !search ? content : Filter(content, filterFields, checkedState, search)
-
-    function rowColor(index){
         if (index % 2 === 0) {
             return {backgroundColor: "#FFFFFF"}
         }
@@ -26,6 +18,7 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
         }
 
     }
+
 
     function handleDeleteProps(item){
         if (table === "permissions") return   {...deleteProps, id: item.id, type: item.type}
@@ -64,12 +57,8 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
 
 
     return (
-        <div className="content-2">
-            <PageHeader title={table} createPath={"new"} setQuery={setSearch}
-                        query={search} filter={checkedState}
-                        setFilter={setCheckedState}/>
-            <table className="my-table" style={style}>
-                <thead>
+        <table className="my-table" style={style}>
+            <thead>
                 <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>
                     {
                         TableData[table].headers.map((value, index) => {
@@ -80,10 +69,10 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
                     }
                     <th className="cell header-cell">ACTION</th>
                 </tr>
-                </thead>
-                {results ?
-                    <tbody>
-                    {(results.length !== 0) ? results.map((item, index) => {
+            </thead>
+            {content ?
+                <tbody>
+                    {(content.length !== 0) ? content.map((item, index) => {
                         return (
                             <tr className="row" style={rowColor(index)} key={index}>
                                 {TableData[table].headers.map((key, index) => {
@@ -102,17 +91,16 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
                                 </td>
                             </tr>
                         )
-                    }) : <Grid height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
-                               wrapperStyle={{justifyContent: "center", marginTop: "10%"}}
-                               wrapperClass="grid-wrapper" style={{}}/>
+                    }) : <Grid   height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
+                                 wrapperStyle={{justifyContent: "center", marginTop: "10%"}}
+                                 wrapperClass="grid-wrapper" style={{}}/>
                     }
-                    </tbody>
-                    : <p>No result</p>
-                }
+                </tbody>
+                : <p>No result</p>
+            }
 
-            </table>
-        </div>
+        </table>
     )
 };
 
-export default MyTable;
+export default MyTableOld;

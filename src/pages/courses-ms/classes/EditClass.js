@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {editClass} from "../../../services/courses-ms/ClassService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {useEffect, useState} from "react";
 import {getAllSubjects} from "../../../services/courses-ms/SubjectService";
 

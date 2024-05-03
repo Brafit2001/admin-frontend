@@ -1,5 +1,5 @@
 import {useLocation} from "react-router-dom";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {editRole} from "../../../services/users-ms/RoleService";
 
 

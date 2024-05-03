@@ -1,4 +1,4 @@
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {newGroup} from "../../../services/groups-ms/GroupService";
 import {useEffect, useState} from "react";
 import {getAllClasses} from "../../../services/courses-ms/ClassService";

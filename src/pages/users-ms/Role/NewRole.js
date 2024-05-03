@@ -1,4 +1,4 @@
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {newRole} from "../../../services/users-ms/RoleService";
 
 const NewRole = () =>{

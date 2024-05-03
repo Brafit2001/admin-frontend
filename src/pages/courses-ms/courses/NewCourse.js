@@ -1,4 +1,4 @@
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {newCourse} from "../../../services/courses-ms/CourseService";
 
 const NewCourse = () =>{

@@ -1,4 +1,4 @@
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {newVote} from "../../../services/votes-ms/VoteService";
 import {useEffect, useState} from "react";
 import {getAllUsers} from "../../../services/users-ms/UserService";

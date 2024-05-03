@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {editTopic} from "../../../services/groups-ms/TopicService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 
 
 const EditTopic = () =>{

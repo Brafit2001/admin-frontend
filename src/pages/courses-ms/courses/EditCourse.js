@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {editCourse} from "../../../services/courses-ms/CourseService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 
 
 const EditCourse = () =>{

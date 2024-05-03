@@ -1,34 +1,61 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import MyTable from "../../../components/table/MyTable";
+import MyTableOld from "../../../components/table/MyTableOld";
 import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
+import {readImage} from "../../../utils/AuxiliarFunctions";
+import {ModalContent} from "../../../components/Modal";
+import {getPostById} from "../../../services/votes-ms/PostService";
 
 const ReadPost = () =>{
-    const [votes, setVotes] = useState(null)
     const location = useLocation()
-    const post  = location.state
+    const [votes, setVotes] = useState(null)
+    const [isOpen, setIsOpen] = useState(false)
+    const [post, setPost] = useState(location.state)
+
+    const path = location.pathname.split('/')
+    const postId = path[path.length - 1]
 
     useEffect(() => {
-        const params = {post: post.id}
+        !post && getPostById(postId).then((post) => setPost(post))
+        const params = {post: postId}
         getAllVotes(params).then((votes) => setVotes(votes))
-    }, [post.id]);
+    }, [post, postId]);
 
 
     return (
         <div className={"content-2"}>
-            <h1>ReadPost</h1>
-            <div>{Object.keys(post).map((key) => {
-                return (
-                    <div>
-                        {key + ": " + post[key]}
+            { post &&
+                <div style={{height: "100%"}}>
+                    <h1>ReadPost</h1>
+                    <div className={"post-image-info"}>
+                        <div className="image">
+                            {(isOpen && post.type === 0) &&
+                                <ModalContent onClose={() => setIsOpen(false)}>
+                                    <img src={readImage(post.content, "users")} alt="" className={"modal-image"}/>
+                                </ModalContent>
+                            }
+                            {
+                                (post.type === 1) ?
+                                    <video width="320" height="240" controls>
+                                        <source src={`data:video/mp4;base64,${post.content}`} type="video/mp4"/>
+                                    </video> :
+                                    <img src={readImage(post.content, "users")} alt="" onClick={() => setIsOpen(!isOpen)}
+                                         className={"post-image"}/>
+                            }
+
+                        </div>
+                        <div className="info">
+                            <p>ID: {post.id}</p>
+                            <p>TITLE: {post.title}</p>
+                            <p>TOPIC: {post.topic}</p>
+                            <p>TYPE: {post.type}</p>
+                            <p>USER: {post.user}</p>
+                        </div>
                     </div>
-                )
-            })}</div>
-            <h1>Votes:</h1>
-            <MyTable content={votes} table={"votes"}
-                     deleteFunction={deleteVote}
-                     style={{height: 200}}
-            />
+                    <h1>Votes:</h1>
+                    <MyTableOld content={votes} table={"votes"} deleteFunction={deleteVote} style={{height: 200}}/>
+                </div>
+            }
         </div>
 
     )

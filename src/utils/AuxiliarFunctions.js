@@ -9,19 +9,19 @@ const Capitalize = (word) => {
 }
 export default Capitalize;
 
-export function readImage(item, table){
-    if (item === null || item === undefined) return ""
+export function readImage(image, table){
+    if (image === null || image === undefined) return ""
 
     const defautlImages =  TableData[table]["defaultImages"]
     const defaultImagesList = Object.keys(defautlImages)
 
-    if (typeof item.image === "object") {
-        return URL.createObjectURL(item.image)
+    if (typeof image === "object") {
+        return URL.createObjectURL(image)
     }
-    else if (CheckElementInList(defaultImagesList, item.image)){
-        return defautlImages[item.image]
+    else if (CheckElementInList(defaultImagesList, image)){
+        return defautlImages[image]
     }else {
-        return `data:image/png;base64,${item.image}`
+        return `data:image/*;base64,${image}`
     }
 
 }
@@ -49,19 +49,19 @@ export const FormatDateToInput = (date) => {
 
     return yyyy + '-' + mm + '-' + dd;
 }
-export const Filter = (list, filterFields, checkedState, search) => {
+export const Filter = (list, filterFields, checkedState, searchQuery) => {
 
     // Comprueba que la lista de valores contiene al menos un elemento de la búsqueda
 
-    const filterCheck = (element) => element && element.toString().toLowerCase().includes(search.toLocaleLowerCase())
+    const filterCheck = (element) => element && element.toString().toLowerCase().includes(searchQuery.toLocaleLowerCase())
 
     return (
-        list.filter((user) => {
+        list.filter((item) => {
             // Lista de campos a filtrar
             const filteredFields = filterFields.filter((value, index) => !!checkedState[index])
             // Objecto con campos filtrados
             const picked = Object.fromEntries(
-                Object.entries(user)
+                Object.entries(item)
                     .filter(([key]) => filteredFields.includes(key))
             );
             return Object.values(picked).some(filterCheck)

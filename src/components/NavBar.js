@@ -30,7 +30,7 @@ const NavBar = () => {
                 </div>
                 <div className="profile">
                     <div className="profile-image">
-                        <img src={readImage(user, "users")} alt=""/>
+                        <img src={user && readImage(user.image, "users")} alt=""/>
                     </div>
                     {
                         user &&

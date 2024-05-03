@@ -1,4 +1,4 @@
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {newTopic} from "../../../services/groups-ms/TopicService";
 
 const NewTopic = () =>{

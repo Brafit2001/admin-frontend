@@ -87,7 +87,7 @@ export const TableData = {
     classes: {
         title: "Classes",
         headers: [
-            "id","subject", "title", "image"
+            "id","subject", "title"
         ],
         editable: [
             "subject", "title", "image"
@@ -177,7 +177,7 @@ export const TableData = {
     posts: {
         title: "Posts",
         headers: [
-            "id","user","topic", "title", "type", "content"
+            "id","user","topic", "title", "type"
         ],
         editable: [
             "user","topic", "title", "type", "content"

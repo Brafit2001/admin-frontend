@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {editPost} from "../../../services/votes-ms/PostService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {useEffect, useState} from "react";
 import {getAllUsers} from "../../../services/users-ms/UserService";
 import {getAllTopics} from "../../../services/groups-ms/TopicService";

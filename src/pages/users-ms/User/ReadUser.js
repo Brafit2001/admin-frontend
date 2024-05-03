@@ -1,19 +1,26 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {deleteUserGroup, deleteUserRole, getUserGroups, getUserRoles} from "../../../services/users-ms/UserService";
-import MyTable from "../../../components/table/MyTable";
+import {
+    deleteUser,
+    deleteUserGroup,
+    deleteUserRole,
+    getUserGroups,
+    getUserRoles
+} from "../../../services/users-ms/UserService";
+import MyTableOld from "../../../components/table/MyTableOld";
 import {readImage} from "../../../utils/AuxiliarFunctions";
+import {ModalContent} from "../../../components/Modal";
+import PageHeader from "../../../components/PageHeader";
+import MyTable from "../../../components/table/MyTable";
 const ReadUser = () =>{
     const [roles, setRoles] = useState(null)
     const [groups, setGroups] = useState(null)
+    const [isOpen, setIsOpen] = useState(false)
     const location = useLocation()
     const user  = location.state
 
     useEffect(() => {
-        getUserRoles(user.id).then((list) => {
-            console.log(list)
-            setRoles(list)
-        })
+        getUserRoles(user.id).then((list) => setRoles(list))
         getUserGroups(user.id).then((list) => setGroups(list))
     }, [user.id]);
 
@@ -21,7 +28,12 @@ const ReadUser = () =>{
         <div className={"content-2"}>
             <div className={"image-info"}>
                 <div className="image">
-                    <img src={readImage(user, "users")} alt=""/>
+                    { isOpen &&
+                        <ModalContent onClose={() => setIsOpen(false)}>
+                            <img src={readImage(user.image, "users")} alt="" className={"modal-image"}/>
+                        </ModalContent>
+                    }
+                    <img src={readImage(user.image, "users")} alt="" onClick={() => setIsOpen(!isOpen)}/>
                 </div>
                 <div className="info">
                     <p>ID: {user.id}</p>
@@ -31,17 +43,17 @@ const ReadUser = () =>{
                     <p>EMAIL: {user.email}</p>
                 </div>
             </div>
-            <h1>Roles:</h1>
-            <MyTable content={roles} table={"roles"}
+            <MyTable content={roles}
+                     table={"roles"}
                      deleteFunction={deleteUserRole}
                      deleteProps={{userId: user.id}}
-                     style={{height: 200}}
-            />
-            <h1>Groups:</h1>
-            <MyTable content={groups} table={"groups"}
+                     style={{height: 200}}/>
+            <MyTable content={groups}
+                     table={"groups"}
                      deleteFunction={deleteUserGroup}
                      deleteProps={{userId: user.id}}
-                     style={{height: 200}}/>
+                     style={{height: 400}}/>
+
         </div>
 
     )

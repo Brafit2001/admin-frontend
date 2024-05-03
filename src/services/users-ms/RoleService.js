@@ -3,14 +3,14 @@ import axios from "axios";
 const BASE_URL = `http://localhost:8080/roles/`
 const TOKEN = localStorage.getItem("token")
 
-export const getAllRoles = (setRoles) =>
+export const getAllRoles = () =>
     axios
         .get(BASE_URL,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
         })
-        .then((response) => setRoles(response.data.data))
+        .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
 export const getRoleUsers = (roleId) =>

@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {editUser, resetPassword} from "../../../services/users-ms/UserService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 
 
 const EditUser = () =>{

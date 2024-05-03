@@ -1,5 +1,5 @@
 import {importUsers, newUser} from "../../../services/users-ms/UserService";
-import MyForm from "../../../components/MyForm";
+import MyForm from "../../../components/form/MyForm";
 import {useState} from "react";
 
 const NewUser = () =>{

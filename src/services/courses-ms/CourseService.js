@@ -14,6 +14,17 @@ export const getAllCourses = () =>
         .catch((error) => console.log(error))
 
 
+export const getCourseBydId = (courseId) =>
+    axios
+        .get(BASE_URL + courseId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 export const editCourse = (course) =>
     axios
         .put(BASE_URL + course.id,

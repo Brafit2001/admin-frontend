@@ -15,6 +15,18 @@ export const getAllClasses = (params) =>
         .catch((error) => console.log(error))
 
 
+export const getClassById = (classId) =>
+    axios
+        .get(BASE_URL + classId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+
 export const editClass = (class_item) =>
     axios
         .put(BASE_URL + class_item.id,

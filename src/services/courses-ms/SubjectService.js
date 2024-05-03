@@ -14,6 +14,16 @@ export const getAllSubjects = (params) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getSubjectById = (subjectId) =>
+    axios
+        .get(BASE_URL + subjectId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
 
 export const editSubject = (subject) =>
     axios

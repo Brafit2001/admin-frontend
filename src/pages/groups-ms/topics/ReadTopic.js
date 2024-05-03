@@ -15,7 +15,7 @@ const ReadTopic = () =>{
     useEffect(() => {
         !topic && getTopicById(topicId).then((topic) => setTopic(topic))
         getTopicGroups(topicId).then((groups) => setGroups(groups))
-    }, [topicId]);
+    }, [topic, topicId]);
 
     return (
         <div className={"content-2"}>

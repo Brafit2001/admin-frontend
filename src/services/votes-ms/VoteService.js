@@ -15,6 +15,17 @@ export const getAllVotes = (params) =>
         .catch((error) => console.log(error))
 
 
+export const getVoteById = (voteId) =>
+    axios
+        .get(BASE_URL + voteId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 export const editVote = (vote) =>
     axios
         .put(BASE_URL + vote.id,

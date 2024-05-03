@@ -10,7 +10,7 @@ import {Filter} from "../../utils/AuxiliarFunctions";
 
 
 
-const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
+const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible}) => {
 
     const filterFields = TableData[table]["filter"]
     const [search,setSearch ] = useState("")
@@ -95,7 +95,9 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
                                 })}
                                 <td className="cell">
                                     <div className="action-buttons">
-                                        <EditButton item={item}/>
+                                        {(editButtonVisible !== false) &&
+                                            <EditButton item={item}/>
+                                        }
                                         <DeleteButton deleteProps={handleDeleteProps(item)}
                                                       deleteFunction={deleteFunction}/>
                                     </div>
@@ -107,7 +109,7 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style}) => {
                                wrapperClass="grid-wrapper" style={{}}/>
                     }
                     </tbody>
-                    : <p>No result</p>
+                    : <tbody><tr><td>No result</td></tr></tbody>
                 }
 
             </table>

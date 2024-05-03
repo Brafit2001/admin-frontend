@@ -1,7 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {deleteTopicGroup, getTopicGroups} from "../../../services/groups-ms/TopicService";
-import MyTableOld from "../../../components/table/MyTableOld";
 import MyTable from "../../../components/table/MyTable";
 
 const ReadTopic = () =>{
@@ -24,10 +23,13 @@ const ReadTopic = () =>{
                     </div>
                 )
             })}</div>
-            <MyTable content={groups} table={"groups"}
+            <MyTable content={groups}
+                     table={"groups"}
                      deleteFunction={deleteTopicGroup}
                      deleteProps={{topicId: topic.id}}
-                     style={{height: 200}}/>
+                     style={{height: 200}}
+                     editButtonVisible={false}
+            />
         </div>
 
     )

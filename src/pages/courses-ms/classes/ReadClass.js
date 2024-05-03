@@ -11,7 +11,7 @@ const ReadClass = () =>{
     useEffect(() => {
         const params = {class: class_item.id}
         getAllGroups(params).then((groups) => setGroups(groups))
-    }, []);
+    }, [class_item.id]);
 
     return (
         <div className={"content-2"}>

@@ -56,7 +56,7 @@ const ReadPost = () =>{
                              table={"votes"}
                              createPath={"new-vote"}
                              deleteFunction={deleteVote}
-                             style={{height: 200}}/>
+                    />
                 </div>
             }
         </div>

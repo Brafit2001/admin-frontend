@@ -43,14 +43,14 @@ const ReadRole = () =>{
                              createPath={"assign-user"}
                              deleteFunction={deleteRoleUser}
                              deleteProps={{roleId: role.id}}
-                             style={{height: 200}}
+                             style={{height: 400}}
                              editButtonVisible={false}/>
                     <MyTable content={permissions}
                              table={"permissions"}
                              createPath={"assign-permission"}
                              deleteFunction={deleteRolePermission}
                              deleteProps={{roleId: role.id}}
-                             style={{height: 200}}
+                             style={{height: 400}}
                              editButtonVisible={false}/>
                 </div>
             }

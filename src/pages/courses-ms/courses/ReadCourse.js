@@ -33,7 +33,6 @@ const ReadCourse = () =>{
                              createPath={"new-subject"}
                              table={"subjects"}
                              deleteFunction={deleteSubject}
-                             style={{height: 200}}
                     />
                 </div>
             }

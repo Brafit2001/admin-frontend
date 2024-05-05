@@ -34,7 +34,6 @@ const ReadTopic = () =>{
                              createPath={"assign-group"}
                              deleteFunction={deleteTopicGroup}
                              deleteProps={{topicId: topic.id}}
-                             style={{height: 200}}
                              editButtonVisible={false}
                     />
                 </div>

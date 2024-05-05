@@ -20,7 +20,7 @@ const ReadGroup = () =>{
         !group && getGroupById(groupId).then((group) => setGroup(group))
         getGroupTopics(groupId).then((topics) => setTopics(topics))
         getGroupUsers(groupId).then((users) => setUsers(users))
-    }, [groupId]);
+    }, [group, groupId]);
 
     return (
         <div className={"content-2"}>
@@ -38,13 +38,13 @@ const ReadGroup = () =>{
                              createPath={"assign-user"}
                              deleteFunction={deleteGroupUser}
                              deleteProps={{groupId: group.id}}
-                             style={{height: 200}}
+                             style={{height: 400}}
                              editButtonVisible={false}/>
                     <MyTable content={topics} table={"topics"}
                              createPath={"assign-topic"}
                              deleteFunction={deleteGroupTopic}
                              deleteProps={{groupId: group.id}}
-                             style={{height: 200}}
+                             style={{height: 400}}
                              editButtonVisible={false}/>
                 </div>
             }

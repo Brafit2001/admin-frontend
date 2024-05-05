@@ -40,7 +40,7 @@ const TableSearch = ({title, createPath, setQuery, query, filter ,setFilter}) =>
     };
 
     return (
-        <div className="title-actions">
+        <div className="table-search">
             <h1>{title}</h1>
             <div className="actions">
                 <ClickAwayListener onClickAway={handleClickAway}>

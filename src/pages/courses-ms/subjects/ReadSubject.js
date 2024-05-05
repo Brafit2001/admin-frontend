@@ -33,9 +33,11 @@ const ReadSubject = () =>{
                         )
                     })}
                     </div>
-                    <MyTable content={classes} table={"classes"}
+                    <MyTable content={classes}
+                             table={"classes"}
                              createPath={"new-class"}
-                             deleteFunction={deleteClass} style={{height: 200}}/>
+                             deleteFunction={deleteClass}
+                    />
                 </div>
             }
         </div>

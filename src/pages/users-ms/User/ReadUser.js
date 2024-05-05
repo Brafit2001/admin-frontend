@@ -29,7 +29,7 @@ const ReadUser = () =>{
         <div className={"content-2"}>
             { user &&
                 <div style={{height: "100%"}}>
-                    <div className={"image-info"}>
+                    <div className={"image-info"} style={{height: "20%"}}>
                         <div className="image">
                             {isOpen &&
                                 <ModalContent onClose={() => setIsOpen(false)}>
@@ -51,7 +51,7 @@ const ReadUser = () =>{
                              createPath={"assign-role"}
                              deleteFunction={deleteUserRole}
                              deleteProps={{userId: user.id}}
-                             style={{height: 200}}
+                             style={{height: 400}}
                              editButtonVisible={false}/>
                     <MyTable content={groups}
                              table={"groups"}

@@ -67,10 +67,10 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
 
 
     return (
-        <div>
+        <div className={"my-table"} >
             <TableSearch title={table} createPath={createPath} setQuery={setSearch} query={search} filter={checkedState}
                          setFilter={setCheckedState}/>
-            <table className="my-table" style={style}>
+            <table className="table-content" style={style} >
                 <thead>
                 <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>
                     {

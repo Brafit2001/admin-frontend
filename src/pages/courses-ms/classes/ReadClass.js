@@ -33,7 +33,7 @@ const ReadClass = () =>{
                              table={"groups"}
                              createPath={"new-group"}
                              deleteFunction={deleteGroup}
-                             style={{height: 700}}/>
+                    />
                 </div>
             }
 

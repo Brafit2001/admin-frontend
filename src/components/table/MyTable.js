@@ -4,10 +4,9 @@ import EditButton from "../buttons/EditButton";
 import DeleteButton from "../buttons/DeleteButton";
 import {CheckElementInList, readImage} from "../../utils/AuxiliarFunctions";
 import {Grid} from "react-loader-spinner";
-import PageHeader from "../PageHeader";
+import TableSearch from "./TableSearch";
 import {useState} from "react";
 import {Filter} from "../../utils/AuxiliarFunctions";
-import Checkbox from '@mui/material/Checkbox';
 import ControlledCheckbox from "../ControlledCheckBox";
 
 
@@ -16,7 +15,6 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
                      deleteButtonVisible, checkButtonVisible = false,createPath = "new",
                      addItemToList}) => {
 
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const filterFields = TableData[table]["filter"]
     const [search,setSearch ] = useState("")
     const [checkedState, setCheckedState] = useState(new Array(filterFields.length).fill(true));
@@ -70,8 +68,8 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
 
     return (
         <div>
-            <PageHeader title={table} createPath={createPath} setQuery={setSearch} query={search} filter={checkedState}
-                        setFilter={setCheckedState}/>
+            <TableSearch title={table} createPath={createPath} setQuery={setSearch} query={search} filter={checkedState}
+                         setFilter={setCheckedState}/>
             <table className="my-table" style={style}>
                 <thead>
                 <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>

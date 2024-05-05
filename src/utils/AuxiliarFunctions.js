@@ -61,17 +61,15 @@ export const Filter = (list, filterFields, checkedState, searchQuery) => {
     // Comprueba que la lista de valores contiene al menos un elemento de la búsqueda
 
     const filterCheck = (element) => element && element.toString().toLowerCase().includes(searchQuery.toLocaleLowerCase())
-
-    return (
-        list.filter((item) => {
-            // Lista de campos a filtrar
-            const filteredFields = filterFields.filter((value, index) => !!checkedState[index])
-            // Objecto con campos filtrados
-            const picked = Object.fromEntries(
-                Object.entries(item)
-                    .filter(([key]) => filteredFields.includes(key))
-            );
-            return Object.values(picked).some(filterCheck)
-        })
-    )
+    const results = list.filter((item) => {
+        // Lista de campos a filtrar
+        const filteredFields = filterFields.filter((value, index) => !!checkedState[index])
+        // Objecto con campos filtrados
+        const picked = Object.fromEntries(
+            Object.entries(item)
+                .filter(([key]) => filteredFields.includes(key))
+        );
+        return Object.values(picked).some(filterCheck)
+    })
+    return (results.length === 0) ? null : results
 }

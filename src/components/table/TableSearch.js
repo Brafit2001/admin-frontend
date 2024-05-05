@@ -1,13 +1,13 @@
-import SearchButton from "./buttons/SearchButton";
-import AddButton from "./buttons/AddButton";
+import SearchButton from "../buttons/SearchButton";
+import AddButton from "../buttons/AddButton";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import Box from '@mui/material/Box';
 import {useState} from "react";
-import {TableData} from "./table/TableData";
+import {TableData} from "./TableData";
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 
-const PageHeader = ({title, createPath, setQuery, query, filter ,setFilter}) => {
+const TableSearch = ({title, createPath, setQuery, query, filter ,setFilter}) => {
 
     const filterList = TableData[title.toLowerCase()]["filter"]
     const [open, setOpen] = useState(false);
@@ -74,4 +74,4 @@ const PageHeader = ({title, createPath, setQuery, query, filter ,setFilter}) => 
 
 }
 
-export default PageHeader;
+export default TableSearch;

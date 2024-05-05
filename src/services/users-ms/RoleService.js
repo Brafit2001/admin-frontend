@@ -1,11 +1,12 @@
 import axios from "axios";
+import {checkParams} from "../../utils/AuxiliarFunctions";
 
 const BASE_URL = `http://localhost:8080/roles/`
 const TOKEN = localStorage.getItem("token")
 
-export const getAllRoles = () =>
+export const getAllRoles = (params) =>
     axios
-        .get(BASE_URL,{
+        .get(checkParams(params, BASE_URL),{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -33,6 +34,17 @@ export const getRoleUsers = (roleId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getRoleRemainingUsers = (roleId) =>
+    axios
+        .get(`${BASE_URL}${roleId}/users-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const getRolePermissions = (roleId) =>
     axios
@@ -44,6 +56,15 @@ export const getRolePermissions = (roleId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getRoleRemainingPermissions = (roleId) =>
+    axios
+        .get(`${BASE_URL}${roleId}/permissions-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
 
 
 export const newRole = (role) =>
@@ -106,6 +127,16 @@ export const editRole = (role) =>
 export const assignRole = (body) =>
     axios
         .post(`${BASE_URL}assign-user-to-role`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const assignPermission = (body) =>
+    axios
+        .post(`${BASE_URL}assign-permission-to-role`,body,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }

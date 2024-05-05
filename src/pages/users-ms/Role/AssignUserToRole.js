@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {getAllUsers} from "../../../services/users-ms/UserService";
-import {assignRole} from "../../../services/users-ms/RoleService";
+import {assignRole, getRoleRemainingUsers} from "../../../services/users-ms/RoleService";
+import MyTable from "../../../components/table/MyTable";
 
 
 const AssignUserToRole = () => {
     const [users, setUsers] = useState(null)
-    const [userId, setUserId] = useState(null)
+    const [selectedUsers, setSelectedUsers] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -14,31 +14,40 @@ const AssignUserToRole = () => {
     const roleId = path[path.length - 2]
 
     useEffect(() => {
-        getAllUsers().then((users) => {
-            setUsers(users)
-            setUserId(users[0].id)
-        })
-    }, []);
+        getRoleRemainingUsers(roleId).then((users) => setUsers(users))
+    }, [roleId]);
 
-    function handleOnchange(e) {
-        e.preventDefault()
-        setUserId(e.target.value)
+    function addUser(user, checked){
+
+        const newList = [...selectedUsers]
+        if (checked === false){
+            const index = selectedUsers.indexOf(user.id)
+            newList.splice(index, 1)
+        }else newList.push(user.id)
+
+        setSelectedUsers(newList)
+
     }
-
 
     function handleSubmit(e) {
         e.preventDefault()
-        const body = {user: userId, role: roleId}
-        assignRole(body).then(() => navigate(`/clipclass/roles/${roleId}`))
+        selectedUsers.forEach((userId) => {
+            const body = {user: userId, role: roleId}
+            assignRole(body).then(() => console.log(`User ${userId} Assigned`))
+        })
+        navigate(`/clipclass/roles/${roleId}`)
     }
 
-    return(
-        <div>
-            <select name={"assign-user"} id={"assign-user"} onChange={(e) => handleOnchange(e)}>
-                {users && users.sort().map((user) => (
-                    <option value={user.id} key={user.id}>{user.name}</option>
-                ))}
-            </select>
+    return (
+        <div className={"content-2"}>
+            <MyTable content={users}
+                     table={"users"}
+                     deleteButtonVisible={false}
+                     editButtonVisible={false}
+                     checkButtonVisible={true}
+                     addItemToList={addUser}
+                     style={{height: "600px"}}
+            />
             <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
         </div>
     )

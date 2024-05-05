@@ -13,7 +13,6 @@ export const getAllUsers = () =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-
 export const getUserById = (userId) =>
     axios
         .get(BASE_URL + userId,{
@@ -23,7 +22,6 @@ export const getUserById = (userId) =>
         })
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
-
 
 export const getUserRoles = (userId) =>
     axios
@@ -35,6 +33,15 @@ export const getUserRoles = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getUserRemainingRoles = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/roles-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
 
 export const getUserGroups = (userId) =>
     axios
@@ -46,7 +53,15 @@ export const getUserGroups = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-
+export const getUserRemainingGroups = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/groups-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
 
 export const editUser = (user) => {
     const bodyFormData = new FormData();
@@ -88,7 +103,6 @@ export const  importUsers = (formData) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-
 export const deleteUser = (props) =>
     axios
         .delete(BASE_URL + props.id,
@@ -121,8 +135,6 @@ export const deleteUserGroup = (props) =>
             })
         .then((response) => response)
         .catch((error) => console.log(error))
-
-
 
 export const resetPassword = (user) =>
     axios

@@ -1,12 +1,14 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {assignRole, getAllRoles} from "../../../services/users-ms/RoleService";
+import {assignRole} from "../../../services/users-ms/RoleService";
+import MyTable from "../../../components/table/MyTable";
+import {getUserRemainingRoles} from "../../../services/users-ms/UserService";
 
 
 const AssignRole = () => {
 
     const [roles, setRoles] = useState(null)
-    const [roleId, setRoleId] = useState(null)
+    const [selectedRoles, setSelectedRoles] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -14,31 +16,39 @@ const AssignRole = () => {
     const userId = path[path.length - 2]
 
     useEffect(() => {
-        getAllRoles().then((roles) => {
-            setRoles(roles)
-            setRoleId(roles[0].id)
-        })
-    }, []);
+        getUserRemainingRoles(userId).then((roles) => setRoles(roles))
+    }, [userId]);
 
-    function handleOnchange(e) {
-        e.preventDefault()
-        setRoleId(e.target.value)
+    function addRole(role, checked){
+
+        const newList = [...selectedRoles]
+        if (checked === false){
+            const index = selectedRoles.indexOf(role.id)
+            newList.splice(index, 1)
+        }else newList.push(role.id)
+
+        setSelectedRoles(newList)
+
     }
-
 
     function handleSubmit(e) {
         e.preventDefault()
-        const body = {user: userId, role: roleId}
-        assignRole(body).then(() => navigate(`/clipclass/users/${userId}`))
+        selectedRoles.forEach((roleId) => {
+            const body = {user: userId, role: roleId}
+            assignRole(body).then(() => console.log("Role Assigned"))
+        })
+        navigate(`/clipclass/users/${userId}`)
     }
 
     return(
-        <div>
-            <select name={"assign-role"} id={"assign-role"} onChange={(e) => handleOnchange(e)}>
-                {roles && roles.sort().map((role) => (
-                    <option value={role.id} key={role.id}>{role.name}</option>
-                ))}
-            </select>
+        <div className={"content-2"}>
+            <MyTable content={roles}
+                     table={"roles"}
+                     deleteButtonVisible={false}
+                     editButtonVisible={false}
+                     checkButtonVisible={true}
+                     addItemToList={addRole}
+            />
             <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
         </div>
     )

@@ -1,14 +1,15 @@
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {getAllUsers} from "../../../services/users-ms/UserService";
-import {assignRole} from "../../../services/users-ms/RoleService";
-import {getAllTopics} from "../../../services/groups-ms/TopicService";
-import {assignTopic} from "../../../services/groups-ms/GroupService";
+import {
+    assignTopic,
+    getGroupRemainingTopics
+} from "../../../services/groups-ms/GroupService";
+import MyTable from "../../../components/table/MyTable";
 
 
 const AssignTopic = () => {
     const [topics, setTopics] = useState(null)
-    const [topicId, setTopicId] = useState(null)
+    const [selectedTopics, setSelectedTopics] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -16,31 +17,42 @@ const AssignTopic = () => {
     const groupId = path[path.length - 2]
 
     useEffect(() => {
-        getAllTopics().then((topics) => {
-            setTopics(topics)
-            setTopicId(topics[0].id)
-        })
-    }, []);
+        getGroupRemainingTopics(groupId).then((groups) => setTopics(groups))
+    }, [groupId]);
 
-    function handleOnchange(e) {
-        e.preventDefault()
-        setTopicId(e.target.value)
+
+    function addTopic(topic, checked){
+
+        const newList = [...selectedTopics]
+        if (checked === false){
+            const index = selectedTopics.indexOf(topic.id)
+            newList.splice(index, 1)
+        }else newList.push(topic.id)
+
+        setSelectedTopics(newList)
+
     }
 
 
     function handleSubmit(e) {
         e.preventDefault()
-        const body = {topic: topicId, group: groupId}
-        assignTopic(body).then(() => navigate(`/clipclass/groups/${groupId}`))
+        selectedTopics.forEach((topicId) => {
+            const body = {topic: topicId, group: groupId}
+            assignTopic(body).then(() => console.log(`Topic ${topicId} Assigned`))
+        })
+        navigate(`/clipclass/groups/${groupId}`)
     }
 
-    return(
-        <div>
-            <select name={"assign-user"} id={"assign-user"} onChange={(e) => handleOnchange(e)}>
-                {topics && topics.sort().map((topic) => (
-                    <option value={topic.id} key={topic.id}>Id: {topic.id} - {topic.title} - Unit: {topic.unit}</option>
-                ))}
-            </select>
+    return (
+        <div className={"content-2"}>
+            <MyTable content={topics}
+                     table={"topics"}
+                     deleteButtonVisible={false}
+                     editButtonVisible={false}
+                     checkButtonVisible={true}
+                     addItemToList={addTopic}
+                     style={{height: 600}}
+            />
             <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
         </div>
     )

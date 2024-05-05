@@ -7,11 +7,16 @@ import {Grid} from "react-loader-spinner";
 import PageHeader from "../PageHeader";
 import {useState} from "react";
 import {Filter} from "../../utils/AuxiliarFunctions";
+import Checkbox from '@mui/material/Checkbox';
+import ControlledCheckbox from "../ControlledCheckBox";
 
 
 
-const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible, createPath = "new"}) => {
+const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible,
+                     deleteButtonVisible, checkButtonVisible = false,createPath = "new",
+                     addItemToList}) => {
 
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const filterFields = TableData[table]["filter"]
     const [search,setSearch ] = useState("")
     const [checkedState, setCheckedState] = useState(new Array(filterFields.length).fill(true));
@@ -82,7 +87,8 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
                 </thead>
                 {results ?
                     <tbody>
-                    {(results.length !== 0) ? results.map((item, index) => {
+                    {(results.length !== 0) ?
+                        results.map((item, index) => {
                         return (
                             <tr className="row" style={rowColor(index)} key={index}>
                                 {TableData[table].headers.map((key, index) => {
@@ -97,15 +103,27 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
                                         {(editButtonVisible !== false) &&
                                             <EditButton item={item}/>
                                         }
-                                        <DeleteButton deleteProps={handleDeleteProps(item)}
-                                                      deleteFunction={deleteFunction}/>
+                                        {(deleteButtonVisible !== false) &&
+                                            <DeleteButton deleteProps={handleDeleteProps(item)}
+                                                          deleteFunction={deleteFunction}/>
+                                        }
+                                        {(checkButtonVisible !== false) &&
+                                            <ControlledCheckbox item={item} addItem={addItemToList}/>
+                                        }
+
                                     </div>
                                 </td>
                             </tr>
                         )
-                    }) : <Grid height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
-                               wrapperStyle={{justifyContent: "center", marginTop: "10%"}}
-                               wrapperClass="grid-wrapper" style={{}}/>
+                    })
+                        :
+                        <tr>
+                            <td>
+                                <Grid height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
+                                      wrapperStyle={{justifyContent: "center", marginTop: "10%"}}
+                                      wrapperClass="grid-wrapper" style={{}}/>
+                            </td>
+                        </tr>
                     }
                     </tbody>
                     : <tbody><tr><td>No result</td></tr></tbody>

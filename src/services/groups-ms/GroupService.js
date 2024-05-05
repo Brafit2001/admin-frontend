@@ -36,10 +36,30 @@ export const getGroupUsers = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getGroupRemainingUsers = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/users-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
 
 export const getGroupTopics = (userId) =>
     axios
         .get(`${BASE_URL}${userId}/topics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getGroupRemainingTopics = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/topics-remaining`,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }

@@ -36,6 +36,13 @@ export function checkParams(params, url) {
     }
 }
 
+export const containsObject = (obj, list) => {
+    list.forEach((element) => {
+        if (element.id === obj.id) return true
+    })
+    return false
+}
+
 export const CheckElementInList = (list, element) => {
     return list.some((item) => item === element)
 }

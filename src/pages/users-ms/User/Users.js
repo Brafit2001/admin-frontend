@@ -14,7 +14,7 @@ const Users = () => {
 
     return (
         <div className="content-2">
-            <MyTable content={users} table={"users"} deleteFunction={deleteUser}/>
+            <MyTable content={users} table={"users"} deleteFunction={deleteUser} style={{height: 650}}/>
         </div>
     );
 };

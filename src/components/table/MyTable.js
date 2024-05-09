@@ -84,46 +84,45 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
                 </tr>
                 </thead>
                 {results ?
-                    <tbody>
-                    {(results.length !== 0) ?
-                        results.map((item, index) => {
-                        return (
-                            <tr className="row" style={rowColor(index)} key={index}>
-                                {TableData[table].headers.map((key, index) => {
-                                    return (
-                                        <td className="cell" key={index}>
-                                            {selectLink(item, key, table)}
-                                        </td>
-                                    )
-                                })}
-                                <td className="cell">
-                                    <div className="action-buttons">
-                                        {(editButtonVisible !== false) &&
-                                            <EditButton item={item}/>
-                                        }
-                                        {(deleteButtonVisible !== false) &&
-                                            <DeleteButton deleteProps={handleDeleteProps(item)}
-                                                          deleteFunction={deleteFunction}/>
-                                        }
-                                        {(checkButtonVisible !== false) &&
-                                            <ControlledCheckbox item={item} addItem={addItemToList}/>
-                                        }
+                    (results.length !== 0) ?
+                        <tbody>
+                            {results.map((item, index) => {
+                            return (
+                                <tr className="row" style={rowColor(index)} key={index}>
+                                    {TableData[table].headers.map((key, index) => {
+                                        return (
+                                            <td className="cell" key={index}>
+                                                {selectLink(item, key, table)}
+                                            </td>
+                                        )
+                                    })}
+                                    <td className="cell">
+                                        <div className="action-buttons">
+                                            {(editButtonVisible !== false) &&
+                                                <EditButton item={item}/>
+                                            }
+                                            {(deleteButtonVisible !== false) &&
+                                                <DeleteButton deleteProps={handleDeleteProps(item)}
+                                                              deleteFunction={deleteFunction}/>
+                                            }
+                                            {(checkButtonVisible !== false) &&
+                                                <ControlledCheckbox item={item} addItem={addItemToList}/>
+                                            }
 
-                                    </div>
+                                        </div>
+                                    </td>
+                                </tr>)
+                        })}
+                        </tbody>
+                        :
+                        <tbody style={{display: "flex", justifyContent: "center", marginTop: "10%"}}>
+                            <tr>
+                                <td>
+                                    <Grid height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
+                                          wrapperClass="grid-wrapper" style={{}}/>
                                 </td>
                             </tr>
-                        )
-                    })
-                        :
-                        <tr>
-                            <td>
-                                <Grid height="50" width="50" color="#4781FFBA" ariaLabel="grid-loading" radius="12.5"
-                                      wrapperStyle={{justifyContent: "center", marginTop: "10%"}}
-                                      wrapperClass="grid-wrapper" style={{}}/>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
+                        </tbody>
                     : <tbody><tr><td>No result</td></tr></tbody>
                 }
 

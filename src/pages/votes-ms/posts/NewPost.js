@@ -14,7 +14,8 @@ const NewPost = () =>{
         topic: topicIds[0],
         title: null,
         type: postType[0],
-        content: null
+        content: null,
+        visible: 0
     }
     useEffect(() => {
         getAllUsers().then((users) => setUserIds(users.map((user) => user.id)))

@@ -28,7 +28,7 @@ const ReadUser = () =>{
     return (
         <div className={"content-2"}>
             { user &&
-                <div style={{height: "100%"}}>
+                <div className={"content-3"}>
                     <div className={"image-info"} style={{height: "20%"}}>
                         <div className="image">
                             {isOpen &&

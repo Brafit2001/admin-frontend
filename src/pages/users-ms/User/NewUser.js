@@ -31,7 +31,7 @@ const NewUser = () =>{
             <MyForm item={user} actionFunction={newUser} table="users" mode="create"/>
             <h1>Import from excel</h1>
             <input type="file" onChange={handleChange}/>
-            <button type="submit" onClick={handleSubmit}>Upload</button>
+            <button type="submit" onClick={handleSubmit} className={"submit-button"}>Upload</button>
         </div>
 
     )

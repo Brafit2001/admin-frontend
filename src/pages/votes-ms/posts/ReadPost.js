@@ -25,7 +25,7 @@ const ReadPost = () =>{
     return (
         <div className={"content-2"}>
             { post &&
-                <div style={{height: "100%"}}>
+                <div className={"content-3"}>
                     <h1>ReadPost</h1>
                     <div className={"post-image-info"}>
                         <div className="image">

@@ -25,7 +25,7 @@ const ReadGroup = () =>{
     return (
         <div className={"content-2"}>
             {group &&
-                <div style={{height: "100%"}}>
+                <div className={"content-3"}>
                     <h1>ReadGroup</h1>
                     <div>{Object.keys(group).map((key) => {
                         return (

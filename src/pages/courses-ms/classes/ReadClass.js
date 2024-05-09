@@ -20,7 +20,7 @@ const ReadClass = () =>{
     return (
         <div className={"content-2"}>
             {classItem &&
-                <div style={{height: "100%"}}>
+                <div className={"content-3"}>
                     <h1>ReadClass</h1>
                     <div>{Object.keys(classItem).map((key) => {
                         return (

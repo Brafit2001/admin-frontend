@@ -48,7 +48,9 @@ const AssignUserToRole = () => {
                      addItemToList={addUser}
                      style={{height: "600px"}}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+                Submit
+            </button>
         </div>
     )
 }

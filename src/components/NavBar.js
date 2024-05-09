@@ -2,11 +2,12 @@ import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getUserById} from "../services/users-ms/UserService";
 import {jwtDecode} from "jwt-decode";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import Capitalize, {readImage} from "../utils/AuxiliarFunctions";
 
 
-const NavBar = () => {
+const NavBar = ({token}) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null)
 
@@ -17,9 +18,11 @@ const NavBar = () => {
 
 
     useEffect(() => {
-        const userid = jwtDecode(localStorage.getItem("token"))["userId"]
-        getUserById(userid).then((user) => setUser(user))
-
+        const token = localStorage.getItem("token")
+        if (token){
+            const userid = jwtDecode(token)["userId"]
+            getUserById(userid).then((user) => setUser(user))
+        }
     }, []);
 
     return (
@@ -28,12 +31,11 @@ const NavBar = () => {
                 <div className="logo">
                     <Link to="/clipclass">Logo</Link>
                 </div>
-                <div className="profile">
-                    <div className="profile-image">
-                        <img src={user && readImage(user.image, "users")} alt=""/>
-                    </div>
-                    {
-                        user &&
+                {user &&
+                    <div className="profile">
+                        <Link className="profile-image" to={`users/${user && user.id}`} state={user}>
+                            <img src={readImage(user.image, "users")} alt=""/>
+                        </Link>
                         <Link className={"profile-info"} to={`users/${user && user.id}`} state={user}>
                             <p className="name">
                                 {Capitalize(user.name)} {Capitalize(user.surname)}
@@ -42,10 +44,10 @@ const NavBar = () => {
                                 Admin
                             </p>
                         </Link>
-                    }
-                    <button onClick={logOut}>Log out</button>
-                </div>
 
+                        <button onClick={logOut} className={"logout-icon"}>{<LogoutIcon/>}</button>
+                    </div>
+                }
             </div>
         </header>
     )

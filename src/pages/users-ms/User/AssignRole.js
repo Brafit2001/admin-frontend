@@ -41,15 +41,18 @@ const AssignRole = () => {
     }
 
     return(
-        <div className={"content-2"}>
+        <div className={"content-2"} style={{justifyContent: "center"}}>
             <MyTable content={roles}
                      table={"roles"}
                      deleteButtonVisible={false}
                      editButtonVisible={false}
                      checkButtonVisible={true}
                      addItemToList={addRole}
+                     style={{height: 600}}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+                Submit
+            </button>
         </div>
     )
 }

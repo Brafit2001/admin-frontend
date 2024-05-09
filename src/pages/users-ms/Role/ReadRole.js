@@ -28,7 +28,7 @@ const ReadRole = () =>{
     return (
         <div className={"content-2"}>
             {role &&
-                <div style={{height: "100%"}}>
+                <div className={"content-3"}>
                     <h1>ReadRole</h1>
                     <div>{Object.keys(role).map((key) => {
                         return (

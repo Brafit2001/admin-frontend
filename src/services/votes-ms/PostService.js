@@ -25,16 +25,21 @@ export const getPostById = (id) =>
         .catch((error) => console.log(error))
 
 
-export const editPost = (post) =>
-    axios
+export const editPost = (post) => {
+    const bodyFormData = new FormData();
+    Object.keys(post).forEach((key) => {
+        bodyFormData.append(key, post[key]);
+    })
+    return axios
         .put(BASE_URL + post.id,
-            post,{
+            bodyFormData, {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+}
 
 
 export const newPost = (post) => {

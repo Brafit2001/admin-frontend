@@ -51,7 +51,9 @@ const AssignGroup = () => {
                      checkButtonVisible={true}
                      addItemToList={addGroup}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+                Submit
+            </button>
         </div>
     )
 }

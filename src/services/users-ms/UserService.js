@@ -1,6 +1,6 @@
 import axios from 'axios'
+import {TOKEN} from "../../Constants";
 
-const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8080/users/`
 
 export const getAllUsers = () =>

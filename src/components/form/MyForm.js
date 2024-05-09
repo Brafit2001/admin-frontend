@@ -44,7 +44,9 @@ const MyForm = ({item, actionFunction, table, mode, selectList}) => {
                     )
                 })
             }
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+                Submit
+            </button>
         </form>
     )
 

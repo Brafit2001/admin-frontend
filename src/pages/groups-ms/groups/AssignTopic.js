@@ -53,7 +53,9 @@ const AssignTopic = () => {
                      addItemToList={addTopic}
                      style={{height: 600}}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+                Submit
+            </button>
         </div>
     )
 }

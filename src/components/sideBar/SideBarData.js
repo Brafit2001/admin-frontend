@@ -31,6 +31,10 @@ export const SidebarData = [
                 path: '/clipclass/subjects'
             },
             {
+                title: 'Rubrics Management',
+                path: '/clipclass/rubrics'
+            },
+            {
                 title: 'Classes Management',
                 path: '/clipclass/classes'
             }

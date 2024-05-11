@@ -11,7 +11,7 @@ const Votes = () => {
 
     return (
         <div className="content-2">
-            <MyTable content={votes} table={"votes"} deleteFunction={deleteVote}/>
+            <MyTable content={votes} table={"votes"} deleteFunction={deleteVote} addButtonVisible={false}/>
         </div>
     );
 };

@@ -13,6 +13,7 @@ import {topicsRoutes} from "./routes/groups-ms/TopicsRoutes";
 import {postsRoutes} from "./routes/votes-ms/PostsRoutes";
 import {groupsRoutes} from "./routes/groups-ms/GroupsRoutes";
 import Login from "./pages/Login";
+import {rubricsRoutes} from "./routes/courses-ms/RubricsRoutes";
 function App() {
     const token = localStorage.getItem("token")
 
@@ -27,6 +28,7 @@ function App() {
               {rolesRoutes}
               {coursesRoutes}
               {subjectsRoutes}
+                {rubricsRoutes}
               {classesRoutes}
               {groupsRoutes}
               {topicsRoutes}

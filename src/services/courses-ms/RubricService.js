@@ -1,11 +1,12 @@
 import axios from 'axios'
+import {checkParams} from "../../utils/AuxiliarFunctions";
 
 const TOKEN = localStorage.getItem("token")
-const BASE_URL = `http://localhost:8083/topics/`
+const BASE_URL = `http://localhost:8081/rubrics/`
 
-export const getAllTopics = () =>
+export const getAllRubrics = (params) =>
     axios
-        .get(BASE_URL,{
+        .get(checkParams(params, BASE_URL),{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -13,9 +14,9 @@ export const getAllTopics = () =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-export const getTopicById = (topicId) =>
+export const getRubricById = (rubricId) =>
     axios
-        .get(BASE_URL + topicId,{
+        .get(BASE_URL + rubricId,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -23,20 +24,9 @@ export const getTopicById = (topicId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-
-export const getTopicGroups = (topicId) =>
+export const getRubricSubjects = (rubricId) =>
     axios
-        .get(`${BASE_URL}${topicId}/groups`,{
-            headers: {
-                "Authorization": "Bearer " + TOKEN
-            }
-        })
-        .then((response) => response.data.data)
-        .catch((error) => console.log(error))
-
-export const getTopicRubrics= (topicId) =>
-    axios
-        .get(`${BASE_URL}${topicId}/rubrics`,{
+        .get(`${BASE_URL}${rubricId}/subjects`,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -45,9 +35,9 @@ export const getTopicRubrics= (topicId) =>
         .catch((error) => console.log(error))
 
 
-export const getTopicRemainingGroups = (topicId) =>
+export const getRubricRemainingSubjects = (rubricId) =>
     axios
-        .get(`${BASE_URL}${topicId}/groups-remaining`,{
+        .get(`${BASE_URL}${rubricId}/remaining-subjects`,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -56,11 +46,10 @@ export const getTopicRemainingGroups = (topicId) =>
         .catch((error) => console.log(error))
 
 
-
-export const editTopic = (topic) =>
+export const editRubric = (rubric) =>
     axios
-        .put(BASE_URL + topic.id,
-            topic,{
+        .put(BASE_URL + rubric.id,
+            rubric,{
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
@@ -69,10 +58,10 @@ export const editTopic = (topic) =>
         .catch((error) => console.log(error))
 
 
-export const newTopic = (topic) =>
+export const newRubric = (rubric) =>
     axios
         .post(BASE_URL,
-            topic,{
+            rubric,{
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
@@ -82,9 +71,9 @@ export const newTopic = (topic) =>
 
 
 
-export const deleteTopic = (props) =>
+export const deleteRubric = (props) =>
     axios
-        .delete(BASE_URL + props,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -93,9 +82,9 @@ export const deleteTopic = (props) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
-export const deleteTopicGroup = (props) =>
+export const deleteRubricSubject = (props) =>
     axios
-        .delete(`${BASE_URL}${props.topicId}/groups/${props.id}`,
+        .delete(`${BASE_URL}${props["rubricId"]}/subjects/${props.id}`,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -103,9 +92,6 @@ export const deleteTopicGroup = (props) =>
             })
         .then((response) => response)
         .catch((error) => console.log(error))
-
-
-
 
 
 

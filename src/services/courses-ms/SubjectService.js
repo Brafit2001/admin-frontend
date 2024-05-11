@@ -24,6 +24,49 @@ export const getSubjectById = (subjectId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getSubjectRubrics = (subjectId) =>
+    axios
+        .get(`${BASE_URL}${subjectId}/rubrics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getSubjectRemainingRubrics = (subjectId) =>
+    axios
+        .get(`${BASE_URL}${subjectId}/remaining-rubrics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const assignRubric = (body) =>
+    axios
+        .post( `${BASE_URL}assign-rubric-to-subject`,
+            body,{
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+
+export const deleteSubjectRubric = (props) =>
+    axios
+        .delete(`${BASE_URL}${props["subjectId"]}/rubrics/${props.id}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
 
 export const editSubject = (subject) =>
     axios

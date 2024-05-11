@@ -7,7 +7,7 @@ import {TableData} from "./TableData";
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 
-const TableSearch = ({title, createPath, setQuery, query, filter ,setFilter}) => {
+const TableSearch = ({title, createPath, setQuery, query, filter ,setFilter,addButtonVisible}) => {
 
     const filterList = TableData[title.toLowerCase()]["filter"]
     const [open, setOpen] = useState(false);
@@ -66,7 +66,7 @@ const TableSearch = ({title, createPath, setQuery, query, filter ,setFilter}) =>
                     </Box>
                 </ClickAwayListener>
                 <SearchButton setQuery={setQuery} query={query}/>
-                <AddButton path={createPath}/>
+                {addButtonVisible && <AddButton path={createPath}/>}
             </div>
 
         </div>

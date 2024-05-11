@@ -2,10 +2,11 @@ import {useLocation} from "react-router-dom";
 import MyTable from "../../../components/table/MyTable";
 import {useEffect, useState} from "react";
 import {deleteClass, getAllClasses} from "../../../services/courses-ms/ClassService";
-import {getSubjectById} from "../../../services/courses-ms/SubjectService";
+import {deleteSubjectRubric, getSubjectById, getSubjectRubrics} from "../../../services/courses-ms/SubjectService";
 
 const ReadSubject = () =>{
     const [classes, setClasses] = useState(null)
+    const [rubrics, setRubrics] = useState(null)
     const location = useLocation()
 
     const path = location.pathname.split('/')
@@ -18,6 +19,7 @@ const ReadSubject = () =>{
         })
         const params = {subject: subjectId}
         getAllClasses(params).then((classes) => setClasses(classes))
+        getSubjectRubrics(subjectId).then((rubrics) => setRubrics(rubrics))
     }, [subject, subjectId]);
 
     return (
@@ -37,6 +39,12 @@ const ReadSubject = () =>{
                              table={"classes"}
                              createPath={"new-class"}
                              deleteFunction={deleteClass}
+                    />
+                    <MyTable content={rubrics}
+                             table={"rubrics"}
+                             createPath={"assign-rubric"}
+                             deleteFunction={deleteSubjectRubric}
+                             deleteProps={{subjectId: subjectId}}
                     />
                 </div>
             }

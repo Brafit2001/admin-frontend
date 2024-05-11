@@ -138,6 +138,24 @@ export const TableData = {
             "title","code"
         ]
     },
+    rubrics: {
+        title: "Rubrics",
+        headers: [
+            "id","name"
+        ],
+        editable: [
+            "name"
+        ],
+        create: [
+            "name"
+        ],
+        filter: [
+            "id","name"
+        ],
+        show: [
+            "id", "name"
+        ]
+    },
     topics: {
         title: "topics",
         headers: [
@@ -159,19 +177,19 @@ export const TableData = {
     votes: {
         title: "Votes",
         headers: [
-            "id","user","post", "topic", "content", "originality", "clarity", "mean"
+            "id","user","post", "mean"
         ],
         editable: [
-            "user","post", "topic", "content", "originality", "clarity", "mean"
+
         ],
         create: [
-            "user","post", "topic", "content", "originality", "clarity", "mean"
+            "user", "post"
         ],
         filter: [
-            "id","user","post", "topic", "content", "originality", "clarity", "mean"
+            "id","user","post", "mean"
         ],
         show: [
-            "user","content", "originality", "clarity", "mean"
+            "user" , "post" ,"mean"
         ]
     },
     posts: {

@@ -13,7 +13,7 @@ import ControlledCheckbox from "../ControlledCheckBox";
 
 const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButtonVisible,
                      deleteButtonVisible, checkButtonVisible = false,createPath = "new",
-                     addItemToList}) => {
+                     addItemToList, addButtonVisible = true}) => {
 
     const filterFields = TableData[table]["filter"]
     const [search,setSearch ] = useState("")
@@ -69,7 +69,7 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
     return (
         <div className={"my-table"} >
             <TableSearch title={table} createPath={createPath} setQuery={setSearch} query={search} filter={checkedState}
-                         setFilter={setCheckedState}/>
+                         setFilter={setCheckedState} addButtonVisible={addButtonVisible}/>
             <table className="table-content" style={style} >
                 <thead>
                 <tr className="row headers" style={{backgroundColor: "#F9FAFB"}}>

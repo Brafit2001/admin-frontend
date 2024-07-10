@@ -1,4 +1,4 @@
-import {FormatDateToInput, readImage} from "../../utils/AuxiliarFunctions";
+import {FormatDateToInput, parseItemToString, readImage} from "../../utils/AuxiliarFunctions";
 import {useState} from "react";
 import {TableData} from "../table/TableData";
 
@@ -18,14 +18,17 @@ const FieldMap = ({ fieldType, fieldKey, item, selectList, table}) => {
 
     switch (fieldType) {
         case 'select':
-            return (
+
+            if (selectList) return (
                 <select name={fieldKey} id={fieldKey} onChange={(e) => handleOnchange(fieldKey, e)}>
-                    <option value={item[fieldKey]} key={item[fieldKey]}>{item[fieldKey]}</option>
-                    {selectList[fieldKey].sort().map((id) => (
-                        (item[fieldKey] !== id) && <option value={id} key={id}>{id}</option>
+                    {selectList[fieldKey].map((element) => (
+                        <option value={element["id"]} key={element["id"]}>
+                            {parseItemToString(element, fieldKey)}
+                        </option>
                     ))}
                 </select>
-            );
+            )
+            else return (item[fieldKey]);
         case 'image':
             return (
                 <div>
@@ -79,10 +82,10 @@ const FieldMap = ({ fieldType, fieldKey, item, selectList, table}) => {
                     defaultValue={item[fieldKey]}
                     onChange={(e) => handleOnchange(fieldKey, e)} />
             );
-        case 'date':
+        case 'deadline':
             const date = new Date(item[fieldKey.toLowerCase()]);
             return (
-                <input type="date"
+                <input type="datetime-local"
                        defaultValue={FormatDateToInput(date)}
                        onChange={(e) => handleOnchange(fieldKey, e)} />
             );

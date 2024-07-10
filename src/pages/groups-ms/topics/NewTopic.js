@@ -5,12 +5,12 @@ const NewTopic = () =>{
 
     const topic = {
         title: null,
-        deadline: null,
+        deadline: new Date(),
         unit: null
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewTopic</h1>
             <MyForm item={topic} actionFunction={newTopic} table="topics" mode="create"/>
         </div>

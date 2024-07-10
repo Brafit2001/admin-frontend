@@ -8,7 +8,7 @@ const EditRubric = () =>{
     const rubric = location.state
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditRubric</h1>
             <MyForm item={rubric}
                     actionFunction={editRubric}

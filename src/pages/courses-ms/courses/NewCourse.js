@@ -9,7 +9,7 @@ const NewCourse = () =>{
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewCourse</h1>
             <MyForm item={course} actionFunction={newCourse} table="courses" mode="create"/>
         </div>

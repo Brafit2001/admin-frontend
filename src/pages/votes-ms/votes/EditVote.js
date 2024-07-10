@@ -19,7 +19,7 @@ const EditVote = () =>{
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditVote</h1>
 
             {vote["ratings"].map((rubric) => {

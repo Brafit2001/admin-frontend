@@ -3,32 +3,32 @@ import {newSubject} from "../../../services/courses-ms/SubjectService";
 import {useEffect, useState} from "react";
 import {getAllCourses} from "../../../services/courses-ms/CourseService";
 import {useLocation} from "react-router-dom";
+import {getIdFromPath} from "../../../utils/AuxiliarFunctions";
 
 const NewSubject = () =>{
 
-    const [coursesIds, setCoursesIds] = useState([])
-
-    const path = useLocation().pathname.split('/')
-    const courseId = parseInt(path[path.length - 2]) || null
+    const [courses, setCourses] = useState(null)
+    const location = useLocation()
+    const courseId = parseInt(getIdFromPath(location, "courses"))
 
     useEffect(() => {
-        getAllCourses().then((courses) => setCoursesIds(courses.map((course) => course.id)))
-    }, []);
+        !courseId && getAllCourses().then((courses) => setCourses(courses))
+    }, [courseId]);
 
     const subject = {
-        code: "",
-        title: "",
-        course: courseId ? courseId : coursesIds.sort()[0]
+        code: null,
+        title: null,
+        course: courses ? courses[0]["id"] : courseId
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewSubject</h1>
             <MyForm item={subject}
                     actionFunction={newSubject}
                     table="subjects"
-                    mode="create"
-                    selectList={{course: coursesIds}}
+                    mode={courseId ? "createWithCourseId" : "create"}
+                    selectList={courses ? {course: courses} : null}
             />
         </div>
 

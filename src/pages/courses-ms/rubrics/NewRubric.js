@@ -8,7 +8,7 @@ const NewRubric = () =>{
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewRubric</h1>
             <MyForm item={rubric}
                     actionFunction={newRubric}

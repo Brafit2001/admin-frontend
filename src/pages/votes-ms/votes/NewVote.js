@@ -38,7 +38,7 @@ const NewVote = () =>{
     }, [postId]);
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewVote</h1>
             {vote["ratings"].map((rubric) => {
                 return <div>

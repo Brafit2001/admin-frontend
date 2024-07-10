@@ -5,14 +5,13 @@ import ArrowUp from '../../resources/images/arrow-up.svg'
 
 const SubMenu = ({item}) => {
 
-    const [subnav, setSubnav] = useState(false)
+    const [subnav, setSubnav] = useState(true)
 
     const showSubnav = () => setSubnav(!subnav);
 
     return (
         <li className="card">
-            <div className="icon-title" style={subnav ? {backgroundColor: "#F3F4F6"} : null} onClick={showSubnav}>
-                <img className="icon" src={item.icon} alt=""/>
+            <div className="icon-title" style={subnav ? {backgroundColor: "#000B71"} : null} onClick={showSubnav}>
                 <p  className="text">{item.title}</p>
                 <img src={subnav ? ArrowUp : ArrowDown} alt=""/>
             </div>

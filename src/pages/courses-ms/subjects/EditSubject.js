@@ -15,7 +15,7 @@ const EditSubject = () =>{
     }, []);
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditSubject</h1>
             <MyForm item={subject}
                     actionFunction={editSubject}

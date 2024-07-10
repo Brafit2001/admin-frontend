@@ -9,7 +9,7 @@ const EditTopic = () =>{
 
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditTopic</h1>
             <MyForm item={topic} actionFunction={editTopic} table="topics" mode={"editable"}/>
         </div>

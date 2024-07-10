@@ -16,7 +16,7 @@ const EditClass = () =>{
 
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditClass</h1>
             <MyForm item={class_item}
                     actionFunction={editClass}

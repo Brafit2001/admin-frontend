@@ -83,7 +83,7 @@ export const editSubject = (subject) =>
 export const newSubject = (subject) =>
     axios
         .post(BASE_URL,
-            subject,{
+            subject, {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }

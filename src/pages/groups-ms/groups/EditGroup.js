@@ -17,7 +17,7 @@ const EditGroup = () =>{
     }, []);
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditGroup</h1>
             <MyForm item={groups}
                     actionFunction={editGroup}

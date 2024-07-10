@@ -2,7 +2,7 @@
 import '../styles/LoginPage.scss';
 import {useState} from "react";
 import {login} from "../services/AuthService";
-import {useNavigate} from "react-router-dom";
+import Uc3m from "../resources/images/uc3m-logo.png"
 
 const Login = () => {
 
@@ -31,13 +31,13 @@ const Login = () => {
                       <label htmlFor="">Username</label>
                       <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
                       <label htmlFor="">Password</label>
-                      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                      <button type="button" onClick={handleSubmit}>Submit</button>
+                      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                      <button type="button" onClick={handleSubmit} className="submit-button">Submit</button>
                   </form>
               </div>
           </div>
           <div className="right">
-
+              <img src={Uc3m} alt=""/>
           </div>
       </main>
     );

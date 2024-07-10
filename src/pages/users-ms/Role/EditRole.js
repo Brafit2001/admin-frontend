@@ -10,7 +10,7 @@ const EditRole = () =>{
 
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditRole</h1>
             <MyForm item={role} actionFunction={editRole} table="roles" mode={"editable"}/>
         </div>

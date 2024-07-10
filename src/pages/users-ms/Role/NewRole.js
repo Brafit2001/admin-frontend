@@ -8,7 +8,7 @@ const NewRole = () =>{
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>NewRole</h1>
             <MyForm item={role} actionFunction={newRole} table="roles" mode="create"/>
         </div>

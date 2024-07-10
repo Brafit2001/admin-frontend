@@ -11,15 +11,15 @@ const EditUser = () =>{
         let text = "Are you sure you want to reset the password?";
         // eslint-disable-next-line no-restricted-globals
         if (confirm(text) === true) {
-            resetPassword(user).then((message) => console.log(message))
+            resetPassword(user).then((message) => alert("Se ha enviado el email de recuperación de contraseña"))
         }
     }
 
     return (
-        <div>
+        <div className={"form-section"}>
             <h1>EditUser</h1>
             <MyForm item={user} actionFunction={editUser} table="users" mode={"editable"}/>
-            <button onClick={handleOnClick} style={{marginTop: 30}}>Send Reset Password Email</button>
+            <button onClick={handleOnClick} style={{marginTop: 30}} className={"send-email-button"}>Send Reset Password Email</button>
         </div>
 
     )

@@ -1,13 +1,12 @@
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {getAllUsers} from "../../../services/users-ms/UserService";
-import {assignRole} from "../../../services/users-ms/RoleService";
-import {getAllTopics} from "../../../services/groups-ms/TopicService";
 import {assignTopic, getAllGroups} from "../../../services/groups-ms/GroupService";
+import MyTable from "../../../components/table/MyTable";
 
 
 const AssignGroupToTopic = () => {
     const [groups, setGroups] = useState(null)
+    const [selectedGroups, setSelectedGroups] = useState([])
     const [groupId, setGroupId] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
@@ -22,26 +21,38 @@ const AssignGroupToTopic = () => {
         })
     }, []);
 
-    function handleOnchange(e) {
-        e.preventDefault()
-        setGroupId(e.target.value)
-    }
+    function addGroup(group, checked){
 
+        const newList = [...selectedGroups]
+        if (checked === false){
+            const index = selectedGroups.indexOf(group.id)
+            newList.splice(index, 1)
+        }else newList.push(group.id)
+
+        setSelectedGroups(newList)
+    }
 
     function handleSubmit(e) {
         e.preventDefault()
-        const body = {topic: topicId, group: groupId}
-        assignTopic(body).then(() => navigate(`/clipclass/topics/${topicId}`))
+        selectedGroups.forEach((groupId) => {
+            const body = {topic: topicId, group: groupId}
+            assignTopic(body).then(() => console.log(`Group ${groupId} Assigned`))
+        })
+        navigate(`/clipclass/topics/${topicId}`)
     }
 
     return(
-        <div>
-            <select name={"assign-group"} id={"assign-group"} onChange={(e) => handleOnchange(e)}>
-                {groups && groups.sort().map((group) => (
-                    <option value={group.id} key={group.id}>Id: {group.id} - {group.name} - Class: {group.class}</option>
-                ))}
-            </select>
-            <button type="submit" onClick={(e) => handleSubmit(e)} className={"submit-button"}>
+        <div className={"content-2"}>
+            <MyTable content={groups}
+                     table={"groups"}
+                     deleteButtonVisible={false}
+                     editButtonVisible={false}
+                     checkButtonVisible={true}
+                     addItemToList={addGroup}
+                     style={{height: 600}}
+            />
+            <button type="submit" onClick={(e) => handleSubmit(e)}
+                    className={"submit-button"}>
                 Submit
             </button>
         </div>

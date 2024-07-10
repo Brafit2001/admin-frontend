@@ -48,7 +48,7 @@ const MyTable = ({content, table, deleteFunction, deleteProps ,style, editButton
 
         if (CheckElementInList(Object.keys(specialKeys), key)){
             return (
-                <Link to={`/clipclass/${specialKeys[key]}/${item.id}`} state={item}>
+                <Link to={`/clipclass/${specialKeys[key]}/${item[key]}`}>
                     {item[key.toLowerCase()]}
                 </Link>
             )

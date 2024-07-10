@@ -1,7 +1,7 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {deleteVote, getAllVotes} from "../../../services/votes-ms/VoteService";
-import {readImage} from "../../../utils/AuxiliarFunctions";
+import {getIdFromPath, readImage} from "../../../utils/AuxiliarFunctions";
 import {ModalContent} from "../../../components/Modal";
 import {getPostById} from "../../../services/votes-ms/PostService";
 import MyTable from "../../../components/table/MyTable";
@@ -12,8 +12,7 @@ const ReadPost = () =>{
     const [isOpen, setIsOpen] = useState(false)
     const [post, setPost] = useState(location.state)
 
-    const path = location.pathname.split('/')
-    const postId = path[path.length - 1]
+    const postId = getIdFromPath(location, "posts")
 
     useEffect(() => {
         !post && getPostById(postId).then((post) => setPost(post))

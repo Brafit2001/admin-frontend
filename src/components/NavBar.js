@@ -29,7 +29,7 @@ const NavBar = ({token}) => {
         <header>
             <div className="content">
                 <div className="logo">
-                    <Link to="/clipclass">Logo</Link>
+                    <Link to="/clipclass">ClipClass</Link>
                 </div>
                 {user &&
                     <div className="profile">

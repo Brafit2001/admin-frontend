@@ -1,4 +1,6 @@
 import {TableData} from "../components/table/TableData";
+import {modelData} from "../components/ModelToString";
+import {jwtDecode} from "jwt-decode";
 
 const Capitalize = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase()
@@ -26,6 +28,11 @@ export function readImage(image, table){
 
 }
 
+export const getIdFromPath = (location, table = "users") => {
+    const path = location.pathname.split('/')
+    return (CheckElementInList(path, table)) ? path[path.indexOf(table) + 1] : null
+}
+
 export function checkParams(params, url) {
     if (params !== null && params !== undefined) {
         let chain = "?"
@@ -47,14 +54,19 @@ export const CheckElementInList = (list, element) => {
     return list.some((item) => item === element)
 }
 export const FormatDateToInput = (date) => {
+
     const yyyy = date.getFullYear();
-    let mm = date.getMonth() + 1; // Months start at 0!
+    let MM = date.getMonth() + 1; // Months start at 0!
     let dd = date.getDate();
+    let hh = date.getHours()
+    let mm = date.getMinutes()
 
     if (dd < 10) dd = '0' + dd;
+    if (MM < 10) MM = '0' + MM;
+    if (hh < 10) hh = '0' + hh;
     if (mm < 10) mm = '0' + mm;
 
-    return yyyy + '-' + mm + '-' + dd;
+    return yyyy + '-' + MM + '-' + dd + 'T' + hh + ':' + mm;
 }
 export const Filter = (list, filterFields, checkedState, searchQuery) => {
 
@@ -73,3 +85,16 @@ export const Filter = (list, filterFields, checkedState, searchQuery) => {
     })
     return (results.length === 0) ? null : results
 }
+
+export const parseItemToString = (item, key) => {
+    let chain = ""
+    modelData[key].forEach((key) => chain += `${key}: ${item[key]} - `)
+    return chain
+}
+
+export const getLoggedUserId = () => {
+    const token = localStorage.getItem("token")
+    return jwtDecode(token)["userId"]
+}
+
+
